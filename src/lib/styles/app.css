@@ -1,0 +1,87 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url('./buttons.css');
+@import url('./inputs.css');
+@import url('./decorations.css');
+
+@font-face {
+  font-family: 'Geist';
+  src: url('/webfonts/Geist-Regular.woff2');
+}
+
+@font-face {
+  font-family: 'Geist Bold';
+  src: url('/webfonts/Geist-Bold.woff2');
+}
+
+@font-face {
+  font-family: 'Geist Medium';
+  src: url('/webfonts/Geist-Medium.woff2');
+}
+
+*, *::before, *::after {
+    color: hsl(203, 31%, 23%);
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    text-rendering: optimizeLegibility;
+    font-family: 'Geist';
+    outline: none;
+    line-height: 1.8;
+}
+
+a {
+  font-family: 'Geist Medium';
+}
+
+button, label, b, h1, h2, h3, h4, h5 {
+  color: hsl(210, 21%, 17%);
+  font-family: 'Geist Bold';
+}
+
+html, body, input, button {font-size: clamp(16px, 2vw, 2vh)} /* 16px */
+
+html, body {
+  background-color: #fcfdff;
+}
+
+
+h1 {font-size: 1.990rem; /* 31.84px */}
+
+h2 {font-size: 1.658rem; /* 26.56px */}
+
+h3 {font-size: 1.382rem; /* 22.08px */}
+
+h4 {font-size: 1.152rem; /* 18.4px */}
+
+h5 {font-size: 0.960rem; /* 15.36px */}
+
+small {font-size: 0.667rem; /* 10.72px */}
+
+section {
+  padding: 4em;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2em;
+}
+
+p {
+  text-wrap: pretty;
+  width: clamp(none, 100%, 16em);
+}
+
+::grammarly-desktop-integration {
+  display: none;
+}
+
+::placeholder {
+  color: hsla(205, 16%, 63%, 0.561);
+}
+
+::selection {
+  background-color: #152134af;
+  color: hsl(0, 0%, 100%);
+}
+
+::-webkit-scrollbar {
+  display: none;
+}

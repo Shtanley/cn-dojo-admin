@@ -1,0 +1,8 @@
+input {
+    padding: 1em 2em;
+    border: solid 0.16em rgba(231, 237, 244, 0.24);
+    box-shadow: 0.2em 0.2em 0.4em #d3dae251, -0.2em -0.2em 0.4em #d3dae251;
+    border-radius: 0.4em;
+    background-color: transparent;
+    font-family: "Geist Medium";
+}

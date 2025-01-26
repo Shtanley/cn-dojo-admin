@@ -1,0 +1,13 @@
+button {
+    padding: 1em 2em;
+    background-color: transparent;
+    transition: all 0.2s;
+    border: solid 0.16em rgba(231, 237, 244, 0.24);
+    box-shadow: 0.5em 0.5em 1em #d3dae251, -0.5em -0.5em 1em #d3dae251;
+    min-width: fit-content;
+    border-radius: 0.4em;
+}
+button:hover {
+    box-shadow: 0.1em 0.1em 0.25em #d3dae251, -0.1em -0.1em 0.25em #d3dae251;
+
+}

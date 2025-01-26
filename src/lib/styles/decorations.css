@@ -1,0 +1,15 @@
+.card {
+    padding: 1em;
+    border: solid 0.16em rgba(231, 237, 244, 0.24);
+    border-radius: 1em;
+    width: 100%;
+    min-height: fit-content;
+    min-width: 18em;
+    display: flex;
+    flex-direction: column;
+    padding: 2em;
+    gap: 1em;
+    flex: 1;
+    box-shadow: 0.5em 0.5em 1em #d3dae251, -0.5em -0.5em 1em #d3dae251;
+    max-width: 48em;
+}
