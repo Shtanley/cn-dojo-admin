@@ -8,6 +8,13 @@
       "when": 1737936546162,
       "tag": "0000_late_korath",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1737937028394,
+      "tag": "0001_brainy_amphibian",
+      "breakpoints": true
     }
   ]
 }

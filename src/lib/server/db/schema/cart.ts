@@ -6,7 +6,7 @@ import { user } from "./user";
 export const cart = pgTable('cart', {
     id: text('id').primaryKey(),
     productId: text('product_id').references(() => product.id),
-    userId: text('user_id').references(() => user.id),
+    userId: uuid('user_id').references(() => user.id),
     quantity: integer('quantity').notNull().default(1),
     ...timestamps
 });
