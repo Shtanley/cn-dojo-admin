@@ -32,7 +32,7 @@
 		flex-direction: column;
 		padding: 1em;
 		gap: 1em;
-		background-color: #fcfdff;;
+		background-color: white;
 		border-radius: 1em;
 		top: 6em;
 		right: 6em;
@@ -51,7 +51,6 @@
 		justify-content: center;
 		align-items: center;
 		border-radius: 10em;
-		font-family: 'Geist Medium';
 		width: fit-content;
 	}
 	button:hover {

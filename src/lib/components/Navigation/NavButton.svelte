@@ -17,6 +17,7 @@
     }
     button {
         background-color: transparent;
+        box-shadow: none;
         border: none;
         padding: 0;
         display: flex;

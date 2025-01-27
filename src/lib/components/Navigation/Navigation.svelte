@@ -6,7 +6,7 @@
 </script>
 
 <nav>
-	<img src="/N.svg" alt="Icon." />
+	<img src="/logos/normal.svg" alt="Logo." />
 	<div>
 		{#each navItems as navItem}
 			<a class:active={page.url.pathname == navItem.url} href={navItem.url}>{navItem.text}</a>
@@ -34,12 +34,7 @@
 		justify-content: space-between;
 
 		img {
-			border: solid 0.2em rgb(255, 255, 255);
-            background-color: hsl(229, 84%, 5%);
 			height: 3em;
-            width: 3em;
-			border-radius: 100%;
-			box-shadow: 0.2em 0.2em 1em rgba(70, 81, 94, 0.725), -0.2em -0.2em 1em rgb(255, 255, 255);
 		}
 
 		div {
@@ -60,7 +55,6 @@
 		justify-content: center;
 		align-items: center;
 		border-radius: 10em;
-        font-family: 'Geist Medium';
         width: fit-content;		
 		border: solid 0.16em transparent;
 	}
