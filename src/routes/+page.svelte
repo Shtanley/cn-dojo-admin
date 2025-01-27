@@ -9,7 +9,7 @@
 	<span>
 	</span>
 	<div>
-		<h4>Code Ninjas Dojo Admin Login</h4>
+		<h4>Code Ninjas Dojo Admin</h4>
 		<br />
 		<form method="post" action="?/login" use:enhance autocomplete="off">
 			<label>
