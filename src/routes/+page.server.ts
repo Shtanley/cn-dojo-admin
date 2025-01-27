@@ -50,7 +50,8 @@ export const actions: Actions = {
 
         return redirect(302, '/dashboard');
     },
-    register: async (event) => {
+    /**
+     * register: async (event) => {
         const formData = await event.request.formData();
 
         const email = formData.get('email');
@@ -81,10 +82,11 @@ export const actions: Actions = {
             const session = await auth.createSession(sessionToken, newAdmin[0].id);
             auth.setSessionTokenCookie(event, sessionToken, session.expiresAt);
         } catch (e) {
-            return fail(500, { message: 'An error has occurred' + e });
+            return fail(500, { message: 'An error has occurred. ' + e });
         }
         return redirect(302, '/dashboard');
     }
+     */
 };
 
 //Not needed as using pg uuid generation.

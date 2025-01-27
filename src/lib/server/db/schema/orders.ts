@@ -7,7 +7,7 @@ import { serial } from "drizzle-orm/pg-core";
 export const order = pgTable('order', {
     id: text('id').primaryKey(),
     productId: text('product_id').references(() => product.id),
-    userId: text('user_id').references(() => user.id),
+    userId: uuid('user_id').references(() => user.id),
     orderNumber: serial('order_number').unique(),
     ...timestamps
 });

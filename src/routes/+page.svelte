@@ -11,15 +11,7 @@
 	<div>
 		<h4>Code Ninjas Dojo Admin Login</h4>
 		<br />
-		<form method="post" action="?/register" use:enhance autocomplete="off">
-			<label>
-				First Name
-				<input name="firstName" type="text" placeholder="First Name" autocomplete="off" />
-			</label>
-			<label>
-				Last Name
-				<input name="lastName" type="text" placeholder="Last Name" autocomplete="off" />
-			</label>
+		<form method="post" action="?/login" use:enhance autocomplete="off">
 			<label>
 				Email
 				<input name="email" type="email" placeholder="m@example.com" autocomplete="off" />
