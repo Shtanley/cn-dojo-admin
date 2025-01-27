@@ -1,41 +1,40 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 @import url('./buttons.css');
 @import url('./inputs.css');
 @import url('./decorations.css');
 
 @font-face {
-  font-family: 'Geist';
-  src: url('/webfonts/Geist-Regular.woff2');
+  font-family: 'Azo Sans';
+  src: url('/fonts/AzoSans-Regular.otf');
 }
 
 @font-face {
-  font-family: 'Geist Bold';
-  src: url('/webfonts/Geist-Bold.woff2');
+  font-family: 'Azo Sans Bold';
+  src: url('/fonts/AzoSans-Bold.otf');
 }
 
 @font-face {
-  font-family: 'Geist Medium';
-  src: url('/webfonts/Geist-Medium.woff2');
+  font-family: 'Azo Sans Black';
+  src: url('/fonts/AzoSans-Black.otf');
 }
+
 
 *, *::before, *::after {
-    color: hsl(203, 31%, 23%);
+    color: hsl(200, 59%, 14%);
     box-sizing: border-box;
     margin: 0;
     padding: 0;
     text-rendering: optimizeLegibility;
-    font-family: 'Geist';
+    font-family: 'Azo Sans';
     outline: none;
     line-height: 1.8;
 }
 
 a {
-  font-family: 'Geist Medium';
+  font-family: 'Azo Sans Bold';
 }
 
 button, label, b, h1, h2, h3, h4, h5 {
-  color: hsl(210, 21%, 17%);
-  font-family: 'Geist Bold';
+  font-family: 'Azo Sans Black';
 }
 
 html, body, input, button {font-size: clamp(16px, 2vw, 2vh)} /* 16px */

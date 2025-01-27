@@ -50,8 +50,7 @@ export const actions: Actions = {
 
         return redirect(302, '/dashboard');
     },
-    /**
-     * register: async (event) => {
+    register: async (event) => {
         const formData = await event.request.formData();
 
         const email = formData.get('email');
@@ -86,7 +85,6 @@ export const actions: Actions = {
         }
         return redirect(302, '/dashboard');
     }
-     */
 };
 
 //Not needed as using pg uuid generation.

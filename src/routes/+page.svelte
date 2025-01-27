@@ -7,12 +7,19 @@
 
 <section>
 	<span>
-		<img src="/N.svg" alt="Icon.">
 	</span>
 	<div>
-		<h4>Naosae Admin Login</h4>
+		<h4>Code Ninjas Dojo Admin Login</h4>
 		<br />
-		<form method="post" action="?/login" use:enhance autocomplete="off">
+		<form method="post" action="?/register" use:enhance autocomplete="off">
+			<label>
+				First Name
+				<input name="firstName" type="text" placeholder="First Name" autocomplete="off" />
+			</label>
+			<label>
+				Last Name
+				<input name="lastName" type="text" placeholder="Last Name" autocomplete="off" />
+			</label>
 			<label>
 				Email
 				<input name="email" type="email" placeholder="m@example.com" autocomplete="off" />
@@ -48,7 +55,8 @@
 		height: 100%;
 		display: grid;
 		place-items: center;
-		background: linear-gradient(45deg, #020617, #000000);
+		background: rgb(0,63,117);
+		background: linear-gradient(180deg, rgba(0,63,117,1) 0%, rgba(0,123,227,1) 100%);
 		background-size: 300% 300%;
 
 		-webkit-animation: AnimationName 31s ease infinite;
@@ -112,7 +120,7 @@
 		}
 	}
 
-	@media (width < 1200px) {
+	@media (width < 1400px) {
 		section {
 			display: flex;
 			flex-direction: column;
