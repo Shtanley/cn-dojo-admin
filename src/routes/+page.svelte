@@ -7,6 +7,15 @@
 
 <section>
 	<span>
+		<!-- TODO -->
+		<!-- Make Img transparent with the bg, either get a HD img or blur curr -->
+		<h4 style="color: white; font-size: 2em;">Welcome to the Dojo</h4>
+		<!-- Here you can keep track of the ninjas progress
+		 		Earn points as you complete games and level up
+				Spend points in the shop for accesories and goodies
+				Check the typing leaderboard
+				Customize your ninja avatar-->
+		<img src="/homepage-Front Page Background 3.png?blur=50" alt="" />
 	</span>
 	<div>
 		<h4>Code Ninjas Dojo Admin</h4>
@@ -72,12 +81,21 @@
 		margin-top: 0.5em;
 	}
 
+	/* Image styling */
 	img {
+		opacity: 0.5;
+		transition: .5s ease;
 		height: 100%;
 		max-width: 50vw;
-		height: fit-content;
-		width: fit-content;
+		object-fit: contain; 
 	}
+	img:hover {
+		opacity: 1;
+		display: block;
+		height: auto;
+		transition: .5s ease;
+	}
+	
 	@-webkit-keyframes AnimationName {
 		0% {
 			background-position: 17% 0%;
