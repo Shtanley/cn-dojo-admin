@@ -6,18 +6,22 @@
 </script>
 
 <section>
-	<span>
-		<!-- TODO -->
-		<!-- Make Img transparent with the bg, either get a HD img or blur curr -->
+	<span class="left-section">	<!-- Left Section -->
 		<h4 style="color: white; font-size: 2em;">Welcome to the Dojo</h4>
-		<!-- Here you can keep track of the ninjas progress
-		 		Earn points as you complete games and level up
-				Spend points in the shop for accesories and goodies
-				Check the typing leaderboard
-				Customize your ninja avatar-->
-		<img src="/homepage-Front Page Background 3.png?blur=50" alt="" />
+		<!-- Background Image -->
+		<img class="background-img" src="/homepage-Front Page Background 3.png?blur=50" alt="" />
+
+		<!-- Hidden List that appears on hover -->
+		<ul class="hidden-list">
+			<li>1. Here you can keep track of the ninjas progress</li>
+			<li>2. Earn points as you complete games and level up</li>
+			<li>3. Spend points in the shop for accesories and goodies</li>
+			<li>4. Check the typing leaderboard</li>
+			<li>5. Customize your ninja avatar</li>
+		</ul>
 	</span>
-	<div>
+
+	<div class="login-section">	<!-- Login Form -->
 		<h4>Code Ninjas Dojo Admin</h4>
 		<br />
 		<form method="post" action="?/login" use:enhance autocomplete="off">
@@ -63,6 +67,7 @@
 		-webkit-animation: AnimationName 31s ease infinite;
 		-moz-animation: AnimationName 31s ease infinite;
 		animation: AnimationName 31s ease infinite;
+		position: relative;
 	}
 	form {
 		display: flex;
@@ -81,20 +86,44 @@
 		margin-top: 0.5em;
 	}
 
-	/* Image styling */
-	img {
+	/* Background Image */
+	.background-img {
 		opacity: 0.5;
-		transition: .5s ease;
+		transition: opacity 0.5s ease;
 		height: 100%;
 		max-width: 50vw;
-		object-fit: contain; 
+		object-fit: contain;
 	}
-	img:hover {
+
+	/* Hover Effect - Show List */
+	.background-img:hover {
 		opacity: 1;
-		display: block;
-		height: auto;
-		transition: .5s ease;
 	}
+
+	.hidden-list {
+		display: none;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		background: rgba(255, 255, 255, 0.8);
+		padding: 1em;
+		border-radius: 10px;
+		list-style: none;
+		box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+	}
+
+	.background-img:hover + .hidden-list {
+		display: block;
+	}
+
+	.hidden-list li {
+		color: black;
+		font-size: 1em;
+		padding: 5px 0;
+		text-align: center;
+	}
+
 	
 	@-webkit-keyframes AnimationName {
 		0% {
