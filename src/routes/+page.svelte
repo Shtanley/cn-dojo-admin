@@ -6,11 +6,23 @@
 </script>
 
 <section>
-	<span>
-		<img src="/logos/normal.svg" alt="">
+	<span class="left-section">	<!-- Left Section -->
+		<h4 style="color: white; font-size: 2em;">Welcome to the Dojo</h4>
+		<!-- Background Image -->
+		<img class="background-img" src="/homepage-Front Page Background 3.png?blur=50" alt="" />
+
+		<!-- Hidden List that appears on hover -->
+		<ul class="hidden-list">
+			<li>1. Here you can keep track of the ninjas progress</li>
+			<li>2. Earn points as you complete games and level up</li>
+			<li>3. Spend points in the shop for accesories and goodies</li>
+			<li>4. Check the typing leaderboard</li>
+			<li>5. Customize your ninja avatar</li>
+		</ul>
 	</span>
-	<div>
-		<h4>Code Ninjas Dojo Admin Login</h4>
+
+	<div class="login-section">	<!-- Login Form -->
+		<h4>Code Ninjas Dojo Admin</h4>
 		<br />
 		<form method="post" action="?/login" use:enhance autocomplete="off">
 			<label>
@@ -57,10 +69,7 @@
 		-webkit-animation: AnimationName 31s ease infinite;
 		-moz-animation: AnimationName 31s ease infinite;
 		animation: AnimationName 31s ease infinite;
-
-		img {
-			height: 30vh;
-		}
+		position: relative;
 	}
 	form {
 		display: flex;
@@ -79,12 +88,59 @@
 		margin-top: 0.5em;
 	}
 
-	img {
+	/* Background Image */
+	.background-img {
+		opacity: 0.5;
+		transition: opacity 0.5s ease;
 		height: 100%;
 		max-width: 50vw;
-		height: fit-content;
-		width: fit-content;
+		object-fit: contain;
 	}
+
+	/* Hover Effect - Show List */
+	.background-img:hover {
+		opacity: 1;
+	}
+
+	/* Hidden List Container */
+	.hidden-list {
+		opacity: 0;
+		visibility: hidden;
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+	}
+
+	/* Show list on hover */
+	.left-section:hover .hidden-list {
+		opacity: 1;
+		visibility: visible;
+	}
+
+	/* Styling for individual list items */
+	.hidden-list li {
+		position: absolute;
+		background: rgba(255, 255, 255, 0.8);
+		padding: 0.5em 1em;
+		border-radius: 5px;
+		font-size: 1em;
+		font-weight: bold;
+		color: black;
+		text-align: center;
+		box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+		transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+	}
+
+	/* Positioning list items in corners and center */
+	.hidden-list li:nth-child(1) { top: 5%; left: 5%; }  /* Top-left */
+	.hidden-list li:nth-child(2) { top: 5%; right: 5%; } /* Top-right */
+	.hidden-list li:nth-child(3) { bottom: 5%; left: 5%; } /* Bottom-left */
+	.hidden-list li:nth-child(4) { bottom: 5%; right: 5%; } /* Bottom-right */
+	.hidden-list li:nth-child(5) { top: 50%; left: 50%; transform: translate(-50%, -50%); } /* Center */
+
+
+	
 	@-webkit-keyframes AnimationName {
 		0% {
 			background-position: 17% 0%;
