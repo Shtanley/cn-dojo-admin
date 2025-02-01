@@ -100,29 +100,43 @@
 		opacity: 1;
 	}
 
+	/* Hidden List Container */
 	.hidden-list {
-		display: none;
+		opacity: 0;
+		visibility: hidden;
 		position: absolute;
-		top: 50%;
-		left: 50%;
-		transform: translate(-50%, -50%);
-		background: rgba(255, 255, 255, 0.8);
-		padding: 1em;
-		border-radius: 10px;
-		list-style: none;
-		box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+		width: 100%;
+		height: 100%;
+		transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
 	}
 
-	.background-img:hover + .hidden-list {
-		display: block;
+	/* Show list on hover */
+	.left-section:hover .hidden-list {
+		opacity: 1;
+		visibility: visible;
 	}
 
+	/* Styling for individual list items */
 	.hidden-list li {
-		color: black;
+		position: absolute;
+		background: rgba(255, 255, 255, 0.8);
+		padding: 0.5em 1em;
+		border-radius: 5px;
 		font-size: 1em;
-		padding: 5px 0;
+		font-weight: bold;
+		color: black;
 		text-align: center;
+		box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+		transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
 	}
+
+	/* Positioning list items in corners and center */
+	.hidden-list li:nth-child(1) { top: 5%; left: 5%; }  /* Top-left */
+	.hidden-list li:nth-child(2) { top: 5%; right: 5%; } /* Top-right */
+	.hidden-list li:nth-child(3) { bottom: 5%; left: 5%; } /* Bottom-left */
+	.hidden-list li:nth-child(4) { bottom: 5%; right: 5%; } /* Bottom-right */
+	.hidden-list li:nth-child(5) { top: 50%; left: 50%; transform: translate(-50%, -50%); } /* Center */
+
 
 	
 	@-webkit-keyframes AnimationName {
