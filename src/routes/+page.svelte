@@ -58,13 +58,11 @@
 	span {
 		flex: 1;
 		height: 100%;
-		display: flex;
-		align-items: center;
-		flex-direction: column;
-		justify-content: center;
+		display: grid;
+		place-items: center;
 		background: rgb(0,63,117);
 		background: linear-gradient(180deg, rgba(0,63,117,1) 0%, rgba(0,123,227,1) 100%);
-		background-size: 100% 100%;
+		background-size: 300% 300%;
 
 		-webkit-animation: AnimationName 31s ease infinite;
 		-moz-animation: AnimationName 31s ease infinite;
