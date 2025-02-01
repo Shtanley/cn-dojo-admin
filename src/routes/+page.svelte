@@ -7,6 +7,7 @@
 
 <section>
 	<span>
+		<img src="/logos/normal.svg" alt="">
 	</span>
 	<div>
 		<h4>Code Ninjas Dojo Admin Login</h4>
@@ -45,15 +46,21 @@
 	span {
 		flex: 1;
 		height: 100%;
-		display: grid;
-		place-items: center;
+		display: flex;
+		align-items: center;
+		flex-direction: column;
+		justify-content: center;
 		background: rgb(0,63,117);
 		background: linear-gradient(180deg, rgba(0,63,117,1) 0%, rgba(0,123,227,1) 100%);
-		background-size: 300% 300%;
+		background-size: 100% 100%;
 
 		-webkit-animation: AnimationName 31s ease infinite;
 		-moz-animation: AnimationName 31s ease infinite;
 		animation: AnimationName 31s ease infinite;
+
+		img {
+			height: 30vh;
+		}
 	}
 	form {
 		display: flex;
