@@ -109,6 +109,7 @@
 		transform: translateY(-50px);
 	}
 
+
 	/* Hidden List Styling */
 	.hidden-list {
 		opacity: 0;
@@ -131,9 +132,38 @@
 		visibility: visible;
 		 /* Moves the list down smoothly */
 		margin-top: 1em;
+  }
+  
+	/* Hidden List Container */
+	.hidden-list {
+		opacity: 0;
+		visibility: hidden;
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
 	}
 
-	
+	/* Show list on hover */
+	.left-section:hover .hidden-list {
+		opacity: 1;
+		visibility: visible;
+	}
+
+	/* Styling for individual list items */
+	.hidden-list li {
+		position: absolute;
+		background: rgba(255, 255, 255, 0.8);
+		padding: 0.5em 1em;
+		border-radius: 5px;
+		font-size: 1em;
+		font-weight: bold;
+		color: black;
+		text-align: center;
+		box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+		transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+	}
+
 	@-webkit-keyframes AnimationName {
 		0% {
 			background-position: 17% 0%;
