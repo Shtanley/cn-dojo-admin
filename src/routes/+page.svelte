@@ -106,7 +106,7 @@
 	.left-section:hover .background-img {
 		opacity: 1;
 		/* Pushes the image up smoothly */
-		/* transform: translateY(-50px); */
+		transform: translateY(-50px);
 	}
 
 	/* Hidden List Styling */
