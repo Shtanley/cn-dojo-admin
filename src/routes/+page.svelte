@@ -8,8 +8,9 @@
 <section>
 	<span class="left-section">	<!-- Left Section -->
 		<h4 style="color: white; font-size: 2em;">Welcome to the Dojo</h4>
+
 		<!-- Background Image -->
-		<img class="background-img" src="/homepage-Front Page Background 3.png?blur=50" alt="" />
+		<img class="background-img" src="/homepage-Front Page Background 3.png" alt="" />
 
 		<!-- Hidden List that appears on hover -->
 		<ul class="hidden-list">
@@ -48,6 +49,7 @@
 		height: 100vh;
 		padding: 0;
 	}
+	
 	div {
 		flex: 1;
 		display: flex;
@@ -55,12 +57,14 @@
 		justify-content: center;
 		align-items: center;
 	}
-	span {
+
+	.left-section {	/* Orignally span, Left Section Styling */
 		flex: 1;
 		height: 100%;
-		display: grid;
-		place-items: center;
-		background: rgb(0,63,117);
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
 		background: linear-gradient(180deg, rgba(0,63,117,1) 0%, rgba(0,123,227,1) 100%);
 		background-size: 300% 300%;
 
@@ -69,6 +73,7 @@
 		animation: AnimationName 31s ease infinite;
 		position: relative;
 	}
+
 	form {
 		display: flex;
 		flex-direction: column;
@@ -76,6 +81,7 @@
 		width: 25em;
 		max-width: 85vw;
 	}
+
 	label {
 		display: flex;
 		flex-direction: column;
@@ -89,17 +95,45 @@
 	/* Background Image */
 	.background-img {
 		opacity: 0.5;
-		transition: opacity 0.5s ease;
-		height: 100%;
-		max-width: 50vw;
+		transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+		height: auto;
+		max-width: 100%;
 		object-fit: contain;
+		margin-top: 1em; /* Keeps original position */
 	}
 
-	/* Hover Effect - Show List */
-	.background-img:hover {
+	/* Move the image upwards when hovering */
+	.left-section:hover .background-img {
 		opacity: 1;
+		/* Pushes the image up smoothly */
+		transform: translateY(-50px);
 	}
 
+
+	/* Hidden List Styling */
+	.hidden-list {
+		opacity: 0;
+		visibility: hidden;
+		margin-top: 0;
+		padding: 1em;
+		background: rgba(255, 255, 255, 0.8);
+		border-radius: 10px;
+		list-style: none;
+		box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+		text-align: left;
+		width: 100%;
+		max-width: fit-content;
+		transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out, margin-top 0.3s ease-in-out;
+	}
+
+	/* Smoothly show the list below the image */
+	.left-section:hover .hidden-list {
+		opacity: 1;
+		visibility: visible;
+		 /* Moves the list down smoothly */
+		margin-top: 1em;
+  }
+  
 	/* Hidden List Container */
 	.hidden-list {
 		opacity: 0;
@@ -130,15 +164,6 @@
 		transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
 	}
 
-	/* Positioning list items in corners and center */
-	.hidden-list li:nth-child(1) { top: 5%; left: 5%; }  /* Top-left */
-	.hidden-list li:nth-child(2) { top: 5%; right: 5%; } /* Top-right */
-	.hidden-list li:nth-child(3) { bottom: 5%; left: 5%; } /* Bottom-left */
-	.hidden-list li:nth-child(4) { bottom: 5%; right: 5%; } /* Bottom-right */
-	.hidden-list li:nth-child(5) { top: 50%; left: 50%; transform: translate(-50%, -50%); } /* Center */
-
-
-	
 	@-webkit-keyframes AnimationName {
 		0% {
 			background-position: 17% 0%;
