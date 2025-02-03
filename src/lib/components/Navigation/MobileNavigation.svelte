@@ -40,7 +40,7 @@
 		display: flex;
 		flex-direction: column;
 		align-items: end;
-		background-color: #e5eaed;
+		background-color: #fcfdff;
 		padding: 4em 2em;
         gap: 1em;
 	}
@@ -50,7 +50,7 @@
 		align-items: end;
         gap: 1em;
     }
-	button, a {
+	a {
 		text-decoration: none;
 		color: hsl(229, 5%, 50%);
 		transition: all 0.2s;
@@ -60,14 +60,14 @@
 		justify-content: center;
 		align-items: center;
 		border-radius: 10em;
-		font-family: 'Geist Medium';
+		font-family: 'Azo Sans Bold';
 		width: fit-content;
         font-size: 1.2em;
 		text-align: end;
 		box-shadow: none;
 		border: solid 0.16em transparent;
 	}
-	button:hover, a:hover,
+	a:hover,
 	.active {
 		color: hsl(229, 84%, 5%);
 		box-shadow: 0.3em 0.3em 1em #d3dae29b, -0.3em -0.3em 1em #ffffff99;

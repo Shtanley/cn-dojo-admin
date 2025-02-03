@@ -37,7 +37,19 @@ button, label, b, h1, h2, h3, h4, h5 {
   font-family: 'Azo Sans Black';
 }
 
-html, body, input, button {font-size: clamp(16px, 2vw, 2vh)} /* 16px */
+html, body, input, button {font-size: 2vh} /* 16px */
+
+@media (width < 800px) {
+  html, body, input, button {font-size: 1.8vh} /* 16px */
+}
+
+@media (width < 600px) {
+  html, body, input, button {font-size: 1.6vh} /* 16px */
+}
+
+@media (width < 400px) {
+  html, body, input, button {font-size: 1.4vh} /* 16px */
+}
 
 html, body {
   background-color: #fcfdff;

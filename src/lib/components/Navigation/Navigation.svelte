@@ -9,7 +9,8 @@
 	<img src="/logos/normal.svg" alt="Logo." />
 	<div>
 		{#each navItems as navItem}
-			<a class:active={page.url.pathname == navItem.url} href={navItem.url}>{navItem.text}</a>
+			<a 
+			class:active={page.url.pathname == navItem.url} href={navItem.url}>{navItem.text}</a>
 		{/each}
 	</div>
 	<DropDown></DropDown>
@@ -73,7 +74,7 @@
         display: none;
     }
 
-	@media (width < 1000px) {
+	@media (width < 1400px) {
         nav {
             display: none;
         }

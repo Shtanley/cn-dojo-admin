@@ -13,11 +13,7 @@ export const navItems: NavItem[] = [
         text: "Students"
     },
     {
-        url: "/dashboard/customers",
-        text: "Customers"
-    },
-    {
-        url: "/dashboard/orders",
-        text: "Orders"
+        url: "/dashboard/attendance",
+        text: "Attendance",
     },
 ]
