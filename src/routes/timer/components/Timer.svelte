@@ -36,7 +36,7 @@
         .inactive {
             width: 0%;
             background-color: #eed1e1;
-            outline: solid 0.2em #7600ff;
+            outline: none;
         }
         .active {
             background-color: #eed1e1;
