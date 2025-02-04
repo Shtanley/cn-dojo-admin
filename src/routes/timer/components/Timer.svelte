@@ -8,6 +8,10 @@
             width = ((now.getTime() - startTime.getTime())/(endTime.getTime() - startTime.getTime()))*100
             status = "active"
         }
+          else if(now.getTime() > endTime.getTime()) {
+            status = "completed"
+            width = 100
+        }
     })
 </script>
 
@@ -30,12 +34,16 @@
             width: 100%;
         }
         .inactive {
+            width: 0%;
             background-color: #eed1e1;
             outline: solid 0.2em #7600ff;
         }
         .active {
             background-color: #eed1e1;
             outline: solid 0.2em #7600ff;
+        }
+        .completed {
+            background-color: #7600ff;
         }
     }
 </style>
