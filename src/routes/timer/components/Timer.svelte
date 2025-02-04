@@ -8,15 +8,11 @@
             width = ((now.getTime() - startTime.getTime())/(endTime.getTime() - startTime.getTime()))*100
             status = "active"
         }
-        else if(now.getTime() > endTime.getTime()) {
-            status = "completed"
-            width = 100
-        }
     })
 </script>
 
 <span>
-    <div class={status} style="width: {width}%;"></div>
+    <div style="width: {width}%;"></div>
 </span>
 
 <style> 
@@ -40,9 +36,6 @@
         .active {
             background-color: #eed1e1;
             outline: solid 0.2em #7600ff;
-        }
-        .completed {
-            background-color: #7600ff;
         }
     }
 </style>
