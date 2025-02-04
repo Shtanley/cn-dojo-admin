@@ -19,10 +19,10 @@ function getTimeBlocks(weekday: boolean, hour: number) {
         timeBlocks.push(activityTimeBlock)
 
         if(i == 3) {
-          minutes += 20
+          minute += 20
          }
          else { 
-          minutes += 10 
+          minute += 10 
        }
     return timeBlocks
 }
