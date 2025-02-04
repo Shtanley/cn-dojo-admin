@@ -12,7 +12,7 @@
 </script>
 
 <span>
-    <div class="status" style="width: {width}%;"></div>
+    <div class={status} style="width: {width}%;"></div>
 </span>
 
 <style> 
