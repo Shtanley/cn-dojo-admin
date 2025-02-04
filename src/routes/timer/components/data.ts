@@ -24,6 +24,7 @@ function getTimeBlocks(weekday: boolean, hour: number) {
          else { 
           minute += 10 
        }
+    }
     return timeBlocks
 }
 
