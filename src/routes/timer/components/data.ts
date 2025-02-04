@@ -17,7 +17,7 @@ function getTimeBlocks(weekday: boolean, hour: number) {
         let activityTimeBlock = new Date()
         activityTimeBlock.setHours(hour, minute, 0, 0)
         timeBlocks.push(activityTimeBlock)
-        if (i == 4) {
+        if (i > 1) {
             minute += 20
         }
         else {
