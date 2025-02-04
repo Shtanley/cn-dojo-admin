@@ -27,7 +27,7 @@
         div {
             height: 0.3em;
             border-radius: 1em;
-            max-width: 100%;
+            width: 100%;
         }
         .inactive {
             background-color: #eed1e1;
