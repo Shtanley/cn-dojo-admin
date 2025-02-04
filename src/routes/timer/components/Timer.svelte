@@ -44,6 +44,7 @@
         }
         .completed {
             background-color: #7600ff;
+            outline: none;
         }
     }
 </style>
