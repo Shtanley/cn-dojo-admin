@@ -80,6 +80,7 @@
 	* {
 		color: #7600ff;
 	}
+
 	section {
 		height: 100vh;
 		display: flex;
