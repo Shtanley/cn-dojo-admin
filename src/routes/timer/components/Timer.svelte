@@ -31,7 +31,7 @@
         div {
             height: 0.3em;
             border-radius: 1em;
-            width: 100%;
+            max-width: 100%;
         }
         .inactive {
             background-color: #eed1e1;
