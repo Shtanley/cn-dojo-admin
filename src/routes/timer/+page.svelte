@@ -52,7 +52,7 @@
 
 <section>
 	<div>
-		<h1>Activites</h1>
+		<h1>Activities</h1>
 		<br />
 		<span></span>
 		{#each activities as activity, i}
