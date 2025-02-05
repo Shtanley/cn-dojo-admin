@@ -33,7 +33,7 @@
 				minute: '2-digit',
 			}).split(" ",1)[0]}
 			</p>
-			<Timer now={now} endTime={end} startTime={start} 					active={active}
+			<Timer completed={completed} now={now} endTime={end} startTime={start} 					active={active}
 			></Timer>
 			<p>{end.toLocaleTimeString('en-US', {
 				hour12: true,

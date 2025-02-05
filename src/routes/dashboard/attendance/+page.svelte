@@ -36,6 +36,8 @@
 
         span {
             display: flex;
+            justify-content: center;
+            align-items: center;
             gap: 1em;
             flex-wrap: wrap;
         }

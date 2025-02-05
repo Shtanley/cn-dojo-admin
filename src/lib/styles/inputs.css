@@ -9,3 +9,9 @@ input {
 input:focus {
     border: solid 0.16em rgba(151, 170, 194, 0.326);
 }
+
+@media (width < 1200px) {
+    input {
+        width: 100%;
+    }
+}

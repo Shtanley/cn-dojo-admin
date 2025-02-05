@@ -8,17 +8,15 @@ export const student = pgTable('student', {
     passwordHash: text('password_hash').notNull(),
     firstName: text('first_name').notNull(),
     lastName: text('last_name').notNull(),
-    belt: text('belt').notNull().default("White"),
-    level: integer('level').notNull().default(1),
-    points: integer('points').notNull().default(0),
-    icon: text("icon"),
-    banner: text("banner"),
+    birthYear: integer('birth_year').notNull(),
+    birthMonth: integer('birth_year').notNull(),
+    birthDay: integer('birth_year').notNull(),
     ...timestamps
 });
 
 export const studentProfile = pgTable('student_profile', {
     id: serial('id').primaryKey(),
-    studetnId: uuid("student_id").references(() => student.id),
+    studentId: uuid("student_id").references(() => student.id),
     belt: text('belt').notNull().default("White"),
     level: integer('level').notNull().default(1),
     points: integer('points').notNull().default(0),
