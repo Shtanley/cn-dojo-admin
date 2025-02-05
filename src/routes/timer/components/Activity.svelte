@@ -60,13 +60,13 @@
 		align-items: center;
 		justify-content: center;
 		width: 100%;
-		margin: 0.25em;
+		margin: 0.25em 1em;
 		padding: 0.25em 2em;
-		gap: 1em;
+		gap: 2em;
 
 		img {
 			height: 4em;
-			width: fit-content
+			width: fit-content;
 		}
 
 		div {
@@ -74,24 +74,28 @@
 			flex-direction: column;
 			width: 100%;
 			min-width: fit-content;
+			justify-content: space-between;
 
 			h3 {
 				font-family: 'Azo Sans Bold';
 			}
 
 			p {
-				width: 3em;
-				
+				width: 7em;
 			}
 			p:last-of-type {
-				width: 5em;
+				width: 10em;
 				min-width: fit-content;
+				text-align: right;
 			}
 			span {
+				margin: 0;
 				padding: 0;
+				gap: 0;
 				img {
 					height: 2em;
 					width: fit-content;
+					margin-left: 1em;
 				}
 			}
 		}
