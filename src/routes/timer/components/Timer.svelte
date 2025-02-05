@@ -35,13 +35,13 @@
 	span {
 		width: 100%;
 		background-color: #ae67ff;
-		height: 0.3em;
+		height: 0.36em;
 		border-radius: 1em;
 		display: flex;
 		align-items: center;
 
 		div {
-			height: 0.3em;
+			height: 100%;
 			border-radius: 1em;
 			width: 100%;
 		}
