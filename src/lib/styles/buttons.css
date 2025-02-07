@@ -14,3 +14,17 @@ button:hover {
     background-color: #07a881;
     transition: all 0.2s;
 }
+@media (width < 1200px) {
+    button {
+        flex: 1;
+        width: 100%;
+    }
+}
+
+.secondary-btn {
+
+}
+
+.caution-btn {
+    
+}

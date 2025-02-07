@@ -14,6 +14,7 @@
         display: flex;
         justify-content: end;
         align-items: center;
+        padding: 2em;
     }
     button {
         background-color: transparent;
@@ -43,12 +44,6 @@
     .open {
         span {
             rotate: -45deg;
-        }
-    }
-
-    @media (width < 1000px) {
-        div {
-            padding: 2em;
         }
     }
 </style>

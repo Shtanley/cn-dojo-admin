@@ -9,9 +9,21 @@
 *  3. Display Students (Ex)
 *  4. Redirect to Student Profile
 */ -->
-
 <script lang="ts">
-	import { students } from "./data";
+    /**
+     * Backend:
+     *  1. Fetch Students
+     *  2. Form Actions for CRUD.
+     * 
+     * Frontend:
+     *  1. Search
+     *  2. Add New Student
+     *  3. Display Students (Ex)
+     *  4. Redirect to Student Profile
+    */
+   let { data } = $props()
+
+	let { students } = data
 </script>
 
 <section>
