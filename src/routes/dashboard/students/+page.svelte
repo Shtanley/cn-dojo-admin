@@ -21,9 +21,9 @@
      *  3. Display Students (Ex)
      *  4. Redirect to Student Profile
     */
-   let { data } = $props()
+    let { data } = $props()
 
-	let { students } = data
+    import { students } from "./data"
 </script>
 
 <section>
