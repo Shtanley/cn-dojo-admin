@@ -1,6 +1,5 @@
 <script>
 	import { students } from "../students/data";
-
 </script>
 
 
@@ -9,7 +8,7 @@
     <br>
     <span>
         <input type="search" placeholder="Search">
-        <a><button>Open Scanner</button></a>
+        <a><button class="secondary-btn">Open Scanner</button></a>
         <a href="/timer" target="_blank"><button>Open Timer</button></a>
     </span>
     <br>
@@ -17,13 +16,11 @@
         {#each students as student}
         <a class="card" href="#">
             <div>
-                <h3>
-                    {student.name}
-                </h3>
-                <button>Remove</button>
+                <h3>{student.name}</h3>
+                <button class="caution-btn">Remove</button> <!-- Apply caution-btn style -->
             </div>
         </a>
-    {/each}
+        {/each}
     </span>
 </section>
 
