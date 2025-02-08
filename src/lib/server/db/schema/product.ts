@@ -14,7 +14,7 @@ export const product = pgTable('product', {
 
 export const productCategory = pgTable('product_category', {
     id: serial('id').primaryKey(),
-    category: text('category').notNull(),
+    category: text('category').unique().notNull(),
     ...timestamps
 })
 

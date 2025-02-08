@@ -28,10 +28,10 @@ function getTimeBlocks(weekday: boolean, hour: number) {
     return timeBlocks
 }
 
-export const firstHourTimeBlocks = new Date().getDay() == 6 ? getTimeBlocks(false, 15) : getTimeBlocks(true, 15)
-export const secondHourTimeBlocks = new Date().getDay() == 6 ? getTimeBlocks(false, 16) : getTimeBlocks(true, 16)
-export const thirdHourTimeBlocks = new Date().getDay() == 6 ? getTimeBlocks(false, 17) : getTimeBlocks(true, 17)
-export const lastHourTimeBlocks = new Date().getDay() == 6 ? getTimeBlocks(false, 18) : getTimeBlocks(true, 18)
+export const firstHourTimeBlocks = new Date().getDay() == 6 ? getTimeBlocks(false, 15) : getTimeBlocks(true, 12)
+export const secondHourTimeBlocks = new Date().getDay() == 6 ? getTimeBlocks(false, 16) : getTimeBlocks(true, 13)
+export const thirdHourTimeBlocks = new Date().getDay() == 6 ? getTimeBlocks(false, 17) : getTimeBlocks(true, 14)
+export const lastHourTimeBlocks = new Date().getDay() == 6 ? getTimeBlocks(false, 18) : getTimeBlocks(true, 15)
 
 export const activities: Activity[] = [
     {

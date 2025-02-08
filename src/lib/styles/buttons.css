@@ -1,9 +1,8 @@
 button {
-    padding: 1em 2em;
+    padding: 0.7em 2em;
     background-color: #0db88f;
     transition: all 0.2s;
-    border: none;
-    box-shadow: 0 0.1em 1em 0.1em #04372b65;
+    border: solid 0.16em rgba(255, 255, 255, 0.393);
     outline: none;
     min-width: fit-content;
     border-radius: 0.4em;
@@ -19,12 +18,4 @@ button:hover {
         flex: 1;
         width: 100%;
     }
-}
-
-.secondary-btn {
-
-}
-
-.caution-btn {
-    
 }

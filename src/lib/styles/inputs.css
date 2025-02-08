@@ -1,13 +1,14 @@
 input {
     padding: 1em 2em;
-    border: solid 0.16em rgba(229, 236, 244, 0.24);
-    box-shadow: 0 0.1em 1em 0.1em #04372b21;
+    border: solid 0.16em rgba(200, 210, 219, 0.262);
     border-radius: 0.25em;
     background-color: transparent;
     font-family: "Azo Sans Bold";
+    transition: all 0.2s;
 }
-input:focus {
+input:focus, input:hover {
     border: solid 0.16em rgba(151, 170, 194, 0.326);
+    transition: all 0.2s;
 }
 
 @media (width < 1200px) {
