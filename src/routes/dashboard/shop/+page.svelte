@@ -1,6 +1,10 @@
 <script>
 	import { students } from "../students/data";
 
+    /**
+     * Finish student and attendance page first.
+    */
+
 </script>
 
 

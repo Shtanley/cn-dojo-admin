@@ -1,11 +1,15 @@
 <script>
 	import { students } from "../students/data";
 
+    /**
+     * Finish students page first.
+    */
+
 </script>
 
 
 <section>
-    <h2>Attending Students</h2>
+    <h2>Attendance</h2>
     <br>
     <span>
         <input type="search" placeholder="Search">

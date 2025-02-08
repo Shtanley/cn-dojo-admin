@@ -1,6 +1,9 @@
 <script>
 	import { students } from "../students/data";
-
+    /**
+     * 1. Add student modal.
+     * 2. Edit student.
+    */
 </script>
 
 
