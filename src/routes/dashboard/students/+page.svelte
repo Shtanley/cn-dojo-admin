@@ -1,41 +1,48 @@
-<script lang="ts">
-    /**
-     * Backend:
-     *  1. Fetch Students
-     *  2. Form Actions for CRUD.
-     * 
-     * Frontend:
-     *  1. Search
-     *  2. Add New Student
-     *  3. Display Students (Ex)
-     *  4. Redirect to Student Profile
-    */
-   let { data } = $props()
+<script>
+	import { students } from "../students/data";
 
-	let { students } = data
 </script>
 
+
 <section>
-    Search
-    <input>
-    <button>Add New Student</button>
-    {#each students as student}
-        <a href="#">
+    <h2>Students</h2>
+    <br>
+    <span>
+        <input type="search" placeholder="Search">
+        <a><button>Add Student</button></a>
+    </span>
+    <br>
+    <span>
+        {#each students as student}
+        <a class="card" href="#">
             <div>
                 <h3>
                     {student.name}
                 </h3>
+                <h4>Points: {student.points}</h4>
             </div>
         </a>
     {/each}
+    </span>
 </section>
 
 <style>
     section {
-        border: solid 1px red;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
 
-        div {
-            border: solid 2px black;
+        span {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1em;
+            flex-wrap: wrap;
+        }
+
+        a {
+            text-decoration: none;
         }
     }
 </style>

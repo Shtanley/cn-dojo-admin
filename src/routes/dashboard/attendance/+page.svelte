@@ -41,5 +41,9 @@
             gap: 1em;
             flex-wrap: wrap;
         }
+
+        a {
+            text-decoration: none;
+        }
     }
 </style>
