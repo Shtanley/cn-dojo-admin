@@ -1,7 +1,7 @@
 <script>
 	import { page } from '$app/state';
 	import { fade } from 'svelte/transition';
-	import { navItems } from './data';
+	import { additionalNavItems, navItems } from './data';
 
 	import NavButton from './NavButton.svelte';
 	import { enhance } from '$app/forms';
@@ -15,6 +15,15 @@
 	<nav transition:fade={{ duration: 100 }}>
 		<div>
 			{#each navItems as navItem}
+				<a
+					onclick={() => {
+						value = false;
+					}}
+					class:active={page.url.pathname == navItem.url}
+					href={navItem.url}>{navItem.text}</a
+				>
+			{/each}
+			{#each additionalNavItems as navItem}
 				<a
 					onclick={() => {
 						value = false;

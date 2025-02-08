@@ -17,3 +17,10 @@ export const navItems: NavItem[] = [
         text: "Attendance",
     },
 ]
+
+export const additionalNavItems: NavItem[] = [
+    {
+        url: "/dashboard/shop",
+        text: "Shop"
+    }
+]
