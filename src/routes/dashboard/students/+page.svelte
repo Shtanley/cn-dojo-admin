@@ -1,23 +1,31 @@
 <script>
 	import { students } from "../students/data";
+	import AddStudentForm from "./AddStudentForm.svelte";
     /**
      * 1. Add student modal.
      * 2. Edit student.
     */
+
+   let showForm = false;
 </script>
 
 
 <section>
+    {#if showForm}
+        <AddStudentForm bind:open={showForm}></AddStudentForm>
+    {/if}
     <h2>Students</h2>
     <br>
     <span>
         <input type="search" placeholder="Search">
-        <a><button>Add Student</button></a>
+        <button onclick={() => {
+            showForm = true
+        }}>Add Student</button>
     </span>
     <br>
     <span>
         {#each students as student}
-        <a class="card" href="#">
+        <a class="card" href="/dashboard/students/{student.name}">
             <div>
                 <h3>
                     {student.name}
