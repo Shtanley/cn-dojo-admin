@@ -10,17 +10,6 @@
 *  4. Redirect to Student Profile
 */ -->
 <script lang="ts">
-    /**
-     * Backend:
-     *  1. Fetch Students
-     *  2. Form Actions for CRUD.
-     * 
-     * Frontend:
-     *  1. Search
-     *  2. Add New Student
-     *  3. Display Students (Ex)
-     *  4. Redirect to Student Profile
-    */
     let { data } = $props()
 
     import { students } from "./data"
@@ -31,7 +20,7 @@
     <div class="search-container">
         <label for="search-input">Search</label>
         <input id="search-input" type="text" placeholder="Search students..." />
-        <button>Add New Student</button>
+        <a><button class="secondary-btn">Add Student</button></a>
     </div>
 
     <!-- Student grid container -->
@@ -39,6 +28,7 @@
         {#each students as student}
             <a href="#" class="student-card">
                 <h3>{student.name}</h3>
+                <small>Points: {student.points}</small>
             </a>
         {/each}
     </div>
@@ -78,11 +68,23 @@
         border-radius: 5px;
     }
 
-    button {
-        padding: 0.8em;
-        font-size: 1em;
-        cursor: pointer;
+    .secondary-btn {
+        padding: 1em 2em;
+        background-color: rgba(0,123,227,1);
+        transition: all 0.2s;
+        border: none;
+        outline: none;
+        max-width: fit-content;
+        border: 2px solid rgba(0,123,227,1);
+        color: white;
     }
+    .secondary-btn:hover {
+        color: rgba(0,63,117,1);
+        background-color: rgb(255, 255, 255);
+        border: 2px solid rgba(0,63,117,1);
+        max-width: fit-content;
+    }
+
 
     /* Student grid layout */
     .student-grid {
@@ -95,13 +97,14 @@
 
     /* Individual student cards */
     .student-card {
-        border: 2px solid rgb(0, 4, 255);
+        /* border: 2px solid black; */
         padding: 1em;
         text-align: center;
-        background-color: #f8f8f8;
+        background-color: #ffffff;
         border-radius: 8px;
         text-decoration: none;
         color: black;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.158);
         transition: transform 0.2s ease-in-out;
     }
 

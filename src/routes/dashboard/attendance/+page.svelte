@@ -17,7 +17,7 @@
         <a class="card" href="#">
             <div>
                 <h3>{student.name}</h3>
-                <button class="caution-btn">Remove</button> <!-- Apply caution-btn style -->
+                <button class="danger-btn">Remove</button> <!-- Apply danger-btn style -->
             </div>
         </a>
         {/each}
