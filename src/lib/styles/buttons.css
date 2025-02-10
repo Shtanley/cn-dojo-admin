@@ -22,14 +22,22 @@ button:hover {
 }
 
 .secondary-btn {
+    padding: 1em 2em;
     background-color: rgba(0,123,227,1);
     transition: all 0.2s;
-    min-width: fit-content;
+    border: none;
+    outline: none;
+    max-width: fit-content;
+    border: 2px solid rgba(0,123,227,1);
     color: white;
 }
 .secondary-btn:hover {
-    background-color: rgba(0,63,117,1);
+    color: rgba(0,63,117,1);
+    background-color: rgb(255, 255, 255);
+    border: 2px solid rgba(0,63,117,1);
+    max-width: fit-content;
 }
+
 
 .danger-btn {
     background-color: rgb(202, 13, 13);

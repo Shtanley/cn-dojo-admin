@@ -12,19 +12,19 @@ export const students: Student[] = [
         points: 100
     },{
         name: "John",
-        points: 100
+        points: 69
     },{
         name: "Jane",
-        points: 100
+        points: 420
     },{
         name: "Arthur",
-        points: 100
+        points: 1337
     },{
         name: "Matteo",
-        points: 100
+        points: 77
     },{
         name: "Lily",
-        points: 100
+        points: 88
     },{
         name: "Rob",
         points: 100
