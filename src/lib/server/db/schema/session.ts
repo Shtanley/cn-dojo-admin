@@ -1,11 +1,11 @@
-import { pgTable, serial, timestamp, uuid } from 'drizzle-orm/pg-core';
+import { pgTable, serial, text, timestamp, uuid } from 'drizzle-orm/pg-core';
 import { admin } from './admin';
 
 export const adminSession = pgTable('admin_session', {
-	id: serial('id').primaryKey(),
+	id: text("id").notNull(),
 	adminId: uuid('admin_id')
 		.notNull()
-		.references(() => admin.id),
+		.references(() => admin.id).notNull(),
 	expiresAt: timestamp('expires_at', { withTimezone: true, mode: 'date' }).notNull()
 });
 

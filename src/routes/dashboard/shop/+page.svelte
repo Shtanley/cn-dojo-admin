@@ -1,18 +1,19 @@
 <script>
 	import { students } from "../students/data";
+
     /**
-     * 1. Add student modal.
-     * 2. Edit student.
+     * Finish student and attendance page first.
     */
+
 </script>
 
 
 <section>
-    <h2>Students</h2>
+    <h2>Shop</h2>
     <br>
     <span>
         <input type="search" placeholder="Search">
-        <a><button>Add Student</button></a>
+        <a><button>Add Product</button></a>
     </span>
     <br>
     <span>
@@ -22,7 +23,7 @@
                 <h3>
                     {student.name}
                 </h3>
-                <h4>Points: {student.points}</h4>
+                <button>Remove</button>
             </div>
         </a>
     {/each}
@@ -49,4 +50,3 @@
         }
     }
 </style>
-

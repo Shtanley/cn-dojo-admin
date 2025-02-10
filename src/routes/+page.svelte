@@ -28,11 +28,11 @@
 		<form method="post" action="?/login" use:enhance autocomplete="off">
 			<label>
 				Email
-				<input name="email" type="email" placeholder="m@example.com" autocomplete="off" />
+				<input name="email" type="email" placeholder="m@example.com" autocomplete="new-password" />
 			</label>
 			<label>
 				Password
-				<input type="password" name="password" />
+				<input type="password" name="password" autocomplete="new-password"/>
 			</label>
 			<button class="primary">Login</button>
 		</form>
@@ -184,7 +184,6 @@
 		div {
 			flex: auto;
 			height: 100vh;
-			justify-content: normal;
 			padding: 25vw 0;
 		}
 		img {

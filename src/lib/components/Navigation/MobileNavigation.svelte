@@ -1,7 +1,7 @@
 <script>
 	import { page } from '$app/state';
 	import { fade } from 'svelte/transition';
-	import { navItems } from './data';
+	import { additionalNavItems, navItems } from './data';
 
 	import NavButton from './NavButton.svelte';
 	import { enhance } from '$app/forms';
@@ -15,6 +15,15 @@
 	<nav transition:fade={{ duration: 100 }}>
 		<div>
 			{#each navItems as navItem}
+				<a
+					onclick={() => {
+						value = false;
+					}}
+					class:active={page.url.pathname == navItem.url}
+					href={navItem.url}>{navItem.text}</a
+				>
+			{/each}
+			{#each additionalNavItems as navItem}
 				<a
 					onclick={() => {
 						value = false;
@@ -43,6 +52,7 @@
 		background-color: #fcfdff;
 		padding: 4em 2em;
         gap: 1em;
+		z-index: 1;
 	}
     div {
         display: flex;
@@ -70,9 +80,8 @@
 	a:hover,
 	.active {
 		color: hsl(229, 84%, 5%);
-		box-shadow: 0.3em 0.3em 1em #d3dae29b, -0.3em -0.3em 1em #ffffff99;
+		border: solid 0.16em rgba(200, 210, 219, 0.262);
 		transition: all 0.2s;
 		translate: -1em 0;
-		border: solid 0.16em rgba(231, 237, 244, 0.24);
 	}
 </style>

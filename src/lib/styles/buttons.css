@@ -1,9 +1,8 @@
 button {
-    padding: 1em 2em;
+    padding: 0.7em 2em;
     background-color: #0db88f;
     transition: all 0.2s;
-    border: none;
-    box-shadow: 0 0.1em 1em 0.1em #04372b65;
+    border: solid 0.16em rgba(255, 255, 255, 0.393);
     outline: none;
     min-width: fit-content;
     border-radius: 0.25em;
@@ -11,9 +10,12 @@ button {
     transition: all 0.2s;
 }
 button:hover {
-    background-color: #07a881;
+    color: #0db88f;
+    background-color: rgb(255, 255, 255);
+    border: solid 0.16em #0db88f;
     transition: all 0.2s;
 }
+
 @media (width < 1200px) {
     button {
         flex: 1;
@@ -22,31 +24,26 @@ button:hover {
 }
 
 .secondary-btn {
-    padding: 1em 2em;
     background-color: rgba(0,123,227,1);
     transition: all 0.2s;
-    border: none;
-    outline: none;
-    max-width: fit-content;
-    border: 2px solid rgba(0,123,227,1);
+    min-width: fit-content;
     color: white;
 }
 .secondary-btn:hover {
-    color: rgba(0,63,117,1);
+    color: rgba(0,123,227,1);
     background-color: rgb(255, 255, 255);
-    border: 2px solid rgba(0,63,117,1);
-    max-width: fit-content;
+    border: solid 0.16em rgba(0,123,227,1);
+    transition: all 0.2s;
 }
-
 
 .danger-btn {
     background-color: rgb(202, 13, 13);
-    border: 2px solid rgb(202, 13, 13);
+    border: solid 0.16em rgba(255, 255, 255, 0.393);
     max-width: fit-content;
     color: white;
 }
 .danger-btn:hover {
     color: rgb(202, 13, 13);
     background-color: rgb(255, 255, 255);
-    border: 2px solid rgb(202, 13, 13);
+    border: solid 0.16em rgb(202, 13, 13);
 }

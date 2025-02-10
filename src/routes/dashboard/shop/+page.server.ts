@@ -10,6 +10,6 @@ export const load = async () => {
 
 export const actions = {
     add: () => {},
-    delete: () => {},
-    update: () => {}
+    update: () => {},
+    remove: () => {},
 };

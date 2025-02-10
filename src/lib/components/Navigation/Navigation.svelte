@@ -62,9 +62,9 @@
 
 	a:hover,
 	.active {
-		box-shadow: 0.3em 0.3em 1em #d3dae251, -0.3em -0.3em 1em #d3dae251;
 		transition: all 0.2s;
-		border: solid 0.16em rgba(231, 237, 244, 0.24);
+		scale: 1.05;
+		border: solid 0.16em rgba(200, 210, 219, 0.262);
 	}
 	.active {
 		translate: 0 1em;
