@@ -1,9 +1,14 @@
 <script lang="ts">
 	import { scale } from 'svelte/transition';
-	import type { ActionData } from './$types';
 	import { enhance } from '$app/forms';
+	import type { ActionData } from './$types';
 
-	let { open = $bindable(false), form}: {open: boolean, form: ActionData } = $props();
+	let { open = $bindable(false), form }: { open: boolean; form: ActionData } =
+		$props();
+
+	let message: string | undefined = $state(form?.message || undefined);
+
+	let messageViewed = $state(false);
 </script>
 
 <section transition:scale>
@@ -40,18 +45,25 @@
 			<input name="level" autocomplete="new-password" placeholder="Level" />
 			<input placeholder="Points" />
 		</span>
-		{#if form?.message}
-			<span class="card" transition:scale>
-				<p>{form?.message ?? ''}</p>
-				<button
-					class="danger-btn"
-					onclick={() => {
-						form.message = "";
-					}}>Dismiss</button
-				>
+		{#if message && !messageViewed}
+			<span class="card" in:scale={{delay: 0}} out:scale={{delay: 0}}>
+				{#key form}
+				{#if form?.success}
+				<p>{form?.success}</p>
+					{:else}
+					<p>{form?.message}</p>
+				{/if}
+				{/key}
+				<button class="danger-btn" onclick={() => {
+					message = undefined
+					messageViewed = true;
+				}}>Dismiss</button>
 			</span>
 		{/if}
-		<button type="submit">Submit</button>
+		<button type="submit" onclick={() => {
+			message = form?.message || undefined
+			messageViewed = false
+		}}>Submit</button>
 	</form>
 </section>
 

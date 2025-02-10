@@ -1,6 +1,6 @@
-import { fail, type Actions } from "@sveltejs/kit";
+import { fail } from "@sveltejs/kit";
 import { students } from "./data";
-import type { PageServerLoad } from "./$types.js";
+import type { Actions, PageServerLoad } from "./$types.js";
 
 export const load: PageServerLoad = async ({params}) => {
     return {
@@ -10,6 +10,7 @@ export const load: PageServerLoad = async ({params}) => {
 
 export const actions: Actions = {
     add: async (event) => {
+        let message = "";
         const formData = await event.request.formData()
         const firstName = formData.get('firstName')
         const lastName = formData.get('lastName');
@@ -25,9 +26,10 @@ export const actions: Actions = {
 
 
         if (!validateEmail(parentEmail)) {
-            console.log("...")
             return fail(400, { message: 'Invalid email.' });
         }
+        console.log(formData)
+        return { success: "Sucessfully added student!" }
     },
     update: () => {},
     remove: () => {}

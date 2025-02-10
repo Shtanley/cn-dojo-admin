@@ -6,7 +6,7 @@
      * 1. Add student modal.
      * 2. Edit student.
     */
-   let form: ActionData = $props()
+   let { form }: {form: ActionData} = $props()
    let showForm: boolean = $state(false);
 </script>
 
