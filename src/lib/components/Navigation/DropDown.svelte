@@ -19,7 +19,8 @@
 						value = false;
 					}}
 					class:active={page.url.pathname == navItem.url}
-					href={navItem.url}>{navItem.text}</a
+					href={navItem.url}>{navItem.text}
+					</a
 				>
 			{/each}
 			<form method="post" action="/dashboard?/logout" use:enhance>
@@ -83,12 +84,12 @@
         font-size: 1.2em;
 		text-align: end;
 		box-shadow: none;
-		border: solid 0.16em transparent;
+		border: solid 0.16em rgba(200, 210, 219, 0.262);
+
 	}
 	a:hover,
 	.active {
 		color: hsl(229, 84%, 5%);
-		box-shadow: 0.3em 0.3em 1em #d3dae29b, -0.3em -0.3em 1em #ffffff99;
-		border: solid 0.16em rgba(231, 237, 244, 0.24);
+		scale: 1.05;
 	}
 </style>

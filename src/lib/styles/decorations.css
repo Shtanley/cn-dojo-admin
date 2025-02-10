@@ -11,8 +11,12 @@
     gap: 1em;
     flex: 1;
     max-width: 48em;
+    scale: 1;
+    transition: all 0.2s;
 }
 
 .card:hover {
     border: solid 0.16em rgba(151, 170, 194, 0.326);
+    scale: 1.02;
+    transition: all 0.2s;
 }

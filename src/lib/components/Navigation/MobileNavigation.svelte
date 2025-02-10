@@ -52,6 +52,7 @@
 		background-color: #fcfdff;
 		padding: 4em 2em;
         gap: 1em;
+		z-index: 1;
 	}
     div {
         display: flex;
@@ -79,9 +80,8 @@
 	a:hover,
 	.active {
 		color: hsl(229, 84%, 5%);
-		box-shadow: 0.3em 0.3em 1em #d3dae29b, -0.3em -0.3em 1em #ffffff99;
+		border: solid 0.16em rgba(200, 210, 219, 0.262);
 		transition: all 0.2s;
 		translate: -1em 0;
-		border: solid 0.16em rgba(231, 237, 244, 0.24);
 	}
 </style>

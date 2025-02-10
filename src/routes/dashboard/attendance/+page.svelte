@@ -13,7 +13,7 @@
     <br>
     <span>
         <input type="search" placeholder="Search">
-        <a><button>Open Scanner</button></a>
+        <a><button class="secondary-btn">Open Scanner</button></a>
         <a href="/timer" target="_blank"><button>Open Timer</button></a>
     </span>
     <br>
@@ -24,7 +24,7 @@
                 <h3>
                     {student.name}
                 </h3>
-                <button>Remove</button>
+                <button class="danger-btn">Remove</button>
             </div>
         </a>
     {/each}

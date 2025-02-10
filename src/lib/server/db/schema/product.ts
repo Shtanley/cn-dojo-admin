@@ -1,6 +1,5 @@
 import { integer, pgTable, serial, text } from "drizzle-orm/pg-core";
 import { timestamps } from "./helpers";
-import { sql } from "drizzle-orm";
 
 export const product = pgTable('product', {
     id: serial('id').primaryKey(),
