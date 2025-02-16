@@ -1,6 +1,7 @@
 import { fail } from "@sveltejs/kit";
 import { students } from "./data";
 import type { Actions, PageServerLoad } from "./$types.js";
+import { validateYear, validateEmail, validateName, validatePassword, validateMonth, validateDay } from "$lib/server/validation";
 
 export const load: PageServerLoad = async ({params}) => {
     return {
@@ -10,21 +11,44 @@ export const load: PageServerLoad = async ({params}) => {
 
 export const actions: Actions = {
     add: async (event) => {
-        let message = "";
         const formData = await event.request.formData()
-        const firstName = formData.get('firstName')
-        const lastName = formData.get('lastName');
-        const userName = formData.get('userName');
-        const password = formData.get('password');
-        const parentEmail = formData.get('parentEmail') as string;
-        const dayOfBirth = formData.get('dayOfBirth');
-        const monthOfBirth = formData.get('monthOfBirth');
-        const yearOfBirth = formData.get('yearOfBirth');
-        const belt = formData.get('belt');
-        const level = formData.get('level');
-        const points = formData.get('points');
 
+        let studentData = {
+            firstName:  formData.get('firstName') as string,
+            lastName:  formData.get('lastName') as string, 
+            userName: formData.get('userName') as string,
+            password: formData.get('password') as string,
+            email: formData.get('parentEmail') as string,
+            birthDay : parseInt(formData.get('dayOfBirth') as string),
+            birthMonth : parseInt(formData.get('monthOfBirth') as string),
+            birthYear : parseInt(formData.get('yearOfBirth') as string),
+        }
 
+        let studentProfileData = {
+            belt : formData.get('belt') as string || "",
+            level : parseInt(formData.get('level') as string) || 0,
+            points : parseInt(formData.get('points') as string) || 0,
+        }  
+
+        console.log(studentProfileData.belt)
+
+        if(!validateName(studentData.lastName)) {
+            return fail(400, { error: "Invalid name." })
+        }
+
+        if(!validateEmail(studentData.email)) {
+            return fail(400, { error: "Invalid email." })
+        }
+
+        if(!validatePassword(studentData.password)) {
+            return fail(400, { error: "Use a more secure password." })
+        }
+
+        if(!validateYear(studentData.birthYear, 15) || !validateMonth(studentData.birthMonth) ||
+        !validateDay(studentData.birthDay)) {
+            return fail(400, { error: "Invalid age." })
+        }
+        
         
         return { success: "Sucessfully added student!" }
     },

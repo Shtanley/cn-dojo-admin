@@ -5,6 +5,7 @@ import { product } from "./product";
 export const student = pgTable('student', {
     id: uuid('id').defaultRandom().primaryKey(),
     email: text('email').notNull().unique(),
+    userName: text('user_name').notNull().unique(),
     passwordHash: text('password_hash').notNull(),
     firstName: text('first_name').notNull(),
     lastName: text('last_name').notNull(),
@@ -34,5 +35,3 @@ export const studentInventory = pgTable('student_inventory', {
 
 export type Student = typeof student.$inferSelect;
 export type StudentProfile = typeof studentProfile.$inferSelect;
-
-

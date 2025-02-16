@@ -6,6 +6,7 @@ import * as auth from '$lib/server/auth';
 import { db } from '$lib/server/db';
 import { admin as adminTable, type Admin } from '$lib/server/db/schema/admin';
 import type { Actions, PageServerLoad } from './$types';
+import { validateEmail, validatePassword } from '$lib/server/validation';
 
 export const load: PageServerLoad = async (event) => {
     if (event.locals.admin) {
@@ -88,24 +89,3 @@ export const actions: Actions = {
     }
      */
 };
-
-//Not needed as using pg uuid generation.
-function generateUserId() {
-    // ID with 120 bits of entropy, or about the same as UUID v4.
-    const bytes = crypto.getRandomValues(new Uint8Array(15));
-    const id = encodeBase32LowerCase(bytes);
-    return id;
-}
-
-function validateEmail(email: unknown): email is string {
-    return (
-        typeof email === 'string' &&
-        email.length >= 3 &&
-        email.length <= 31 //&&
-        ///^[a-z0-9_-]+$/.test(email)
-    );
-}
-
-function validatePassword(password: unknown): password is string {
-    return typeof password === 'string' && password.length >= 6 && password.length <= 255;
-}

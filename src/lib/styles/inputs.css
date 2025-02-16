@@ -1,19 +1,51 @@
-input {
-    padding: 0.7em 2em;
-
+input, select, option {
+    padding: 0.7em 1.3em;
     border: solid 0.16em rgba(200, 210, 219, 0.262);
     border-radius: 0.25em;
     background-color: transparent;
     font-family: "Azo Sans Bold";
     transition: all 0.2s;
 }
-input:focus, input:hover {
+input:focus, input:hover, select:focus, select:hover {
     border: solid 0.16em rgba(151, 170, 194, 0.326);
     transition: all 0.2s;
 }
 
+.input-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    position: relative;
+
+    label {
+        font-size: 0.85rem;
+        position: absolute;
+        left: 1em;
+        top: -0.75em;
+        background-color: #fcfdff;
+        padding: 0 0.7em;
+        font-family: "Azo Sans Bold";
+        border-radius: 100%;
+    }
+}
+
 @media (width < 1200px) {
-    input {
+    input, select, option {
         width: 100%;
     }
+}
+
+option, select {
+    font-size: inherit;
+    font-family: "Azo Sans Bold";
+}
+
+select {
+    background-image: url("data:image/svg+xml;utf8,<svg fill='slate' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
+    background-repeat: no-repeat;
+    background-position-x: 85%;
+    background-position-y: 45%;
+    background-size: 1.5em 1.5em;
+    appearance: none;
 }
