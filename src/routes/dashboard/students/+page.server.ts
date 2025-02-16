@@ -25,21 +25,9 @@ export const actions: Actions = {
         const points = formData.get('points');
 
 
-        if (!validateEmail(parentEmail)) {
-            return fail(400, { message: 'Invalid email.' });
-        }
-        console.log(formData)
+        
         return { success: "Sucessfully added student!" }
     },
     update: () => {},
     remove: () => {}
 };
-
-function validateEmail(email: string): email is string {
-    return (
-        typeof email === 'string' &&
-        email.length >= 3 &&
-        email.length <= 31 //&&
-        ///^[a-z0-9_-]+$/.test(email)
-    );
-}

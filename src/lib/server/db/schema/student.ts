@@ -30,6 +30,9 @@ export const studentInventory = pgTable('student_inventory', {
     productId: serial('product_id').references(() => product.id),
     studentId: uuid('student_id').references(() => student.id)
 })
+
+
 export type Student = typeof student.$inferSelect;
 export type StudentProfile = typeof studentProfile.$inferSelect;
+
 

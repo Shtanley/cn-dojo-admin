@@ -3,12 +3,7 @@
 	import { enhance } from '$app/forms';
 	import type { ActionData } from './$types';
 
-	let { open = $bindable(false), form }: { open: boolean; form: ActionData } =
-		$props();
-
-	let message: string | undefined = $state(form?.message || undefined);
-
-	let messageViewed = $state(false);
+	let { open = $bindable(false), form }: { open: boolean; form: ActionData } = $props();
 </script>
 
 <section transition:scale>
@@ -19,6 +14,10 @@
 				type="reset"
 				class="danger-btn"
 				onclick={() => {
+					if(form) {
+						form.message = ""
+						form.success = ""
+					}
 					open = false;
 				}}>Exit</button
 			>
@@ -45,25 +44,12 @@
 			<input name="level" autocomplete="new-password" placeholder="Level" />
 			<input placeholder="Points" />
 		</span>
-		{#if message && !messageViewed}
-			<span class="card" in:scale={{delay: 0}} out:scale={{delay: 0}}>
-				{#key form}
-				{#if form?.success}
-				<p>{form?.success}</p>
-					{:else}
-					<p>{form?.message}</p>
-				{/if}
-				{/key}
-				<button class="danger-btn" onclick={() => {
-					message = undefined
-					messageViewed = true;
-				}}>Dismiss</button>
-			</span>
+		{#if form?.message || form?.success}
+			<b class="card" class:error={form.message} class:success={form.success}>{form.success}</b>
 		{/if}
-		<button type="submit" onclick={() => {
-			message = form?.message || undefined
-			messageViewed = false
-		}}>Submit</button>
+		<button
+			type="submit">Submit
+		</button>
 	</form>
 </section>
 
@@ -107,14 +93,9 @@
 				width: 100%;
 			}
 			.card {
-				position: absolute;
-				display: flex;
-				justify-content: center;
-				align-items: center;
-				padding: 2em;
+				padding: 0;
+				text-align: center;
 				width: fit-content;
-				max-width: 40vw;
-				background-color: #fcfdff;
 			}
 		}
 	}

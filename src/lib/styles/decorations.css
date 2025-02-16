@@ -20,3 +20,14 @@
     scale: 1.02;
     transition: all 0.2s;
 }
+
+.success {
+    background-color: rgb(175, 255, 175);
+    color: rgb(0, 112, 77);
+    border: solid 0.3em rgba(112, 0, 0, 0.126);
+}
+.error {
+    background-color: rgb(255, 167, 167);
+    color: rgb(112, 0, 0);
+    border: solid 0.3em rgba(112, 0, 0, 0.126);
+}
