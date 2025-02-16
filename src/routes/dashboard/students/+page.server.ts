@@ -1,12 +1,10 @@
 import { fail } from "@sveltejs/kit";
-import { students } from "./data";
 import type { Actions, PageServerLoad } from "./$types.js";
 import { validateYear, validateEmail, validateName, validatePassword, validateMonth, validateDay } from "$lib/server/validation";
+import { students } from "$lib/server/data.js";
 
-export const load: PageServerLoad = async ({params}) => {
-    return {
-        students
-    }
+export const load = async ({params}) => {
+    return {students, hello: "hello"}
 };
 
 export const actions: Actions = {

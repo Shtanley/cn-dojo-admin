@@ -3,10 +3,38 @@
 	import { enhance } from '$app/forms';
 	import type { ActionData } from './$types';
 	import { belts } from '$lib/data';
+	import type { Student } from '$lib/server/data';
+	import { untrack } from 'svelte';
 
-	let { open = $bindable(false), form }: { open: boolean; form: ActionData } = $props();
+	let { open = $bindable(false), form, students }: { open: boolean; form: ActionData, students: Student[] } = $props();
 
+	let firstName: string = $state("");
+	let lastName: string = $state("");
 	let belt: string = $state('White');
+	let username: string = $state("")
+
+	$effect(() => {
+		username = (firstName + "." + lastName).toLocaleLowerCase()
+	})
+
+	$effect(() => {
+		let attempt = 0;
+		
+		for(let i = 0; i < students.length; i++) {
+			if(username === students[i].username) {
+				attempt += 1;
+				let newUsername = username;
+				if(attempt > 1) {
+					newUsername = username.substring(0, username.length - 1) + attempt
+				}
+				else {
+					newUsername += attempt
+				}
+				username = newUsername
+				i = 0
+			}
+		}
+	})
 </script>
 
 <section transition:scale>
@@ -29,11 +57,11 @@
 		<span>
 			<div class="input-container">
 				<label for="firstName"> First Name </label>
-			<input name="firstName" autocomplete="new-password" placeholder="Jelly"/>
+			<input bind:value={firstName} name="firstName" autocomplete="new-password" placeholder="Jelly"/>
 			</div>
 			<div class="input-container">
 				<label for="lastName"> Last Name </label>
-				<input name="lastName" autocomplete="new-password" placeholder="Donut" />
+				<input bind:value={lastName} name="lastName" autocomplete="new-password" placeholder="Donut" />
 			</div>
 		</span>
 		<div class="input-container">
@@ -59,19 +87,19 @@
 		<h4>Profile</h4>
 		<span>
 			<div class="input-container">
-				<label for="username"> Username </label>
-				<input name="username" autocomplete="new-password" placeholder="jelly.donut.10" />
+				<label for="username"> Generated Username </label>
+				<input disabled bind:value={username} name="username" autocomplete="new-password" placeholder="jelly.donut.10" />
 			</div>
 			<div class="input-container">
 				<label for="password"> Password </label>
-				<input type="password" name="password" autocomplete="new-password" placeholder="......." />
+				<input name="password" autocomplete="new-password" placeholder="......." />
 			</div>
 		</span>
 		<span>
 			<div class="input-container">
 
 				<label for="belt">Belt</label>
-				<select name="belt">
+				<select bind:value={belt} name="belt">
 					{#each belts as belt}
 					<option value={belt}>{belt}</option>
 					{/each}

@@ -1,5 +1,5 @@
 <script>
-	import { students } from "../students/data";
+	import { students } from "../../../lib/server/data";
 
     /**
      * Finish student and attendance page first.

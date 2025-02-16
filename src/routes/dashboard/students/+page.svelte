@@ -1,19 +1,22 @@
 <script lang="ts">
-	import { students } from "../students/data";
-	import type { ActionData } from "./$types";
+	import type { ActionData, PageData } from "./$types";
 	import AddStudentForm from "./AddStudentForm.svelte";
+	import type { Student } from "../../../lib/server/data";
+	
     /**
      * 1. Add student modal.
      * 2. Edit student.
     */
-   let { form }: {form: ActionData} = $props()
+   let { form, data }: {form: ActionData, data: PageData} = $props()
+
+   let students = data.students
    let showForm: boolean = $state(false);
 </script>
 
 
 <section>
     {#if showForm}
-        <AddStudentForm {form} bind:open={showForm}></AddStudentForm>
+        <AddStudentForm {students} {form} bind:open={showForm}></AddStudentForm>
     {/if}
     <h2>Students</h2>
     <br>

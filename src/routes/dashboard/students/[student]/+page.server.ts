@@ -1,5 +1,5 @@
 
-import { students, type Student } from '../data.js';
+import { students, type Student } from '../../../../lib/server/data.js';
 
 export const load = async ({params}) => {
     let studentId = params.student

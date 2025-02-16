@@ -21,12 +21,11 @@ input:focus, input:hover, select:focus, select:hover {
     label {
         font-size: 0.85rem;
         position: absolute;
-        left: 1em;
+        left: 1.25em;
         top: -0.75em;
         background-color: #fcfdff;
-        padding: 0 0.7em;
+        padding: 0 0.2em;
         font-family: "Azo Sans Bold";
-        border-radius: 100%;
     }
 }
 
