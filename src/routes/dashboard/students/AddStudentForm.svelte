@@ -111,8 +111,8 @@
 				<input name="level" autocomplete="new-password" placeholder="1" />
 			</div>
 			<div class="input-container">
-				<label for="points">Points</label>
-				<input name="points" placeholder="100" />
+				<label for="points"> Starting Points</label>
+				<input name="points" placeholder="10" />
 			</div>
 		</span>
 		{#if form?.error || form?.success}
