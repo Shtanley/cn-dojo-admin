@@ -26,12 +26,11 @@ export const actions: Actions = {
 
         let studentProfileData = {
             belt : formData.get('belt') as string || "",
-            level : parseInt(formData.get('level') as string) || 0,
-            points : parseInt(formData.get('points') as string) || 0,
+            level : parseInt(formData.get('level') as string) || 1,
+            points : parseInt(formData.get('points') as string) || 10,
         }  
 
-        console.log(studentProfileData.belt)
-
+        console.log(studentData, studentProfileData)
         if(!validateName(studentData.lastName)) {
             return fail(400, { error: "Invalid name." })
         }
@@ -49,6 +48,7 @@ export const actions: Actions = {
             return fail(400, { error: "Invalid age." })
         }
         
+        // Insert.
         
         return { success: "Sucessfully added student!" }
     },

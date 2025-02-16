@@ -12,7 +12,7 @@
 <section transition:scale>
 	<form method="post" action="/dashboard/students?/add" use:enhance>
 		<span>
-			<h2>Add Student</h2>
+			<h2>New Student</h2>
 			<button
 				type="reset"
 				class="danger-btn"
@@ -29,27 +29,17 @@
 		<span>
 			<div class="input-container">
 				<label for="firstName"> First Name </label>
-			<input name="firstName" autocomplete="new-password" placeholder="John"/>
+			<input name="firstName" autocomplete="new-password" placeholder="Jelly"/>
 			</div>
 			<div class="input-container">
 				<label for="lastName"> Last Name </label>
-				<input name="lastName" autocomplete="new-password" placeholder="David" />
+				<input name="lastName" autocomplete="new-password" placeholder="Donut" />
 			</div>
 		</span>
 		<div class="input-container">
 			<label for="parentEmail"> Parent Email </label>
-			<input name="parentEmail" autocomplete="new-password" placeholder="john.david@email.com" />
+			<input name="parentEmail" autocomplete="new-password" placeholder="jelly.donut@email.com" />
 		</div>
-		<span>
-			<div class="input-container">
-				<label for="username"> Username </label>
-				<input name="username" autocomplete="new-password" placeholder="john.david" />
-			</div>
-			<div class="input-container">
-				<label for="password"> Password </label>
-				<input type="password" name="password" autocomplete="new-password" placeholder="......." />
-			</div>
-		</span>
 		<h4>Date of Birth</h4>
 		<span>
 			<div class="input-container">
@@ -67,6 +57,16 @@
 			</div>
 		</span>
 		<h4>Profile</h4>
+		<span>
+			<div class="input-container">
+				<label for="username"> Username </label>
+				<input name="username" autocomplete="new-password" placeholder="jelly.donut.10" />
+			</div>
+			<div class="input-container">
+				<label for="password"> Password </label>
+				<input type="password" name="password" autocomplete="new-password" placeholder="......." />
+			</div>
+		</span>
 		<span>
 			<div class="input-container">
 
@@ -90,7 +90,7 @@
 		{#if form?.error || form?.success}
 			<b class:error={form.error} class:success={form.success}>{form.success}{form.error}</b>
 		{/if}
-		<button type="submit">Submit </button>
+		<button type="submit">Add to Classlist</button>
 	</form>
 </section>
 
