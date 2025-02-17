@@ -1,0 +1,1 @@
+ALTER TABLE "center" ADD CONSTRAINT "center_location_unique" UNIQUE("location");

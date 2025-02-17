@@ -6,6 +6,8 @@ import * as auth from '$lib/server/auth';
 import { db } from '$lib/server/db';
 import { admin as adminTable, type Admin } from '$lib/server/db/schema/admin';
 import type { Actions, PageServerLoad } from './$types';
+import { validateEmail, validatePassword } from '$lib/server/validation';
+import { center as centerTable, type Center } from '$lib/server/db/schema/center';
 
 export const load: PageServerLoad = async (event) => {
     if (event.locals.admin) {
@@ -51,13 +53,14 @@ export const actions: Actions = {
         return redirect(302, '/dashboard');
     },
     /**
-     * register: async (event) => {
+    register: async (event) => {
         const formData = await event.request.formData();
 
         const email = formData.get('email');
         const password = formData.get('password');
         const firstName = formData.get('firstName');
         const lastName = formData.get('lastName');
+        const centerLocation = formData.get('center');
 
         if (!validateEmail(email)) {
             return fail(400, { message: 'Invalid email' });
@@ -76,7 +79,12 @@ export const actions: Actions = {
         });
 
         try {
-            const newAdmin: Admin[] = await db.insert(adminTable).values({ email, firstName, lastName, passwordHash } as Admin).returning();
+
+            const newCenter: Center[] = await db.insert(centerTable).values({
+                location: centerLocation
+            } as Center).returning()
+
+            const newAdmin: Admin[] = await db.insert(adminTable).values({ email, firstName, lastName, passwordHash, center: centerLocation } as Admin).returning();
 
             const sessionToken = auth.generateSessionToken();
             const session = await auth.createSession(sessionToken, newAdmin[0].id);
@@ -86,26 +94,5 @@ export const actions: Actions = {
         }
         return redirect(302, '/dashboard');
     }
-     */
+    **/
 };
-
-//Not needed as using pg uuid generation.
-function generateUserId() {
-    // ID with 120 bits of entropy, or about the same as UUID v4.
-    const bytes = crypto.getRandomValues(new Uint8Array(15));
-    const id = encodeBase32LowerCase(bytes);
-    return id;
-}
-
-function validateEmail(email: unknown): email is string {
-    return (
-        typeof email === 'string' &&
-        email.length >= 3 &&
-        email.length <= 31 //&&
-        ///^[a-z0-9_-]+$/.test(email)
-    );
-}
-
-function validatePassword(password: unknown): password is string {
-    return typeof password === 'string' && password.length >= 6 && password.length <= 255;
-}

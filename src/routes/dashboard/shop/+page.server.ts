@@ -2,7 +2,11 @@ export const load = async () => {
     /**
      * Fetch students
      */
-    let products: string[] = []
+    let products = [
+        {
+            name: "Jellybean"
+        }
+    ]
     return {
         products
     }

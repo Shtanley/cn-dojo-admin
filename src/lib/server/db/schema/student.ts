@@ -1,16 +1,20 @@
 import { integer, pgTable, serial, text, uuid } from "drizzle-orm/pg-core";
 import { timestamps } from "./helpers";
 import { product } from "./product";
+import { center } from "./center";
 
 export const student = pgTable('student', {
     id: uuid('id').defaultRandom().primaryKey(),
     email: text('email').notNull().unique(),
+    userName: text('user_name').notNull().unique(),
     passwordHash: text('password_hash').notNull(),
     firstName: text('first_name').notNull(),
     lastName: text('last_name').notNull(),
     birthYear: integer('birth_year').notNull(),
-    birthMonth: integer('birth_year').notNull(),
-    birthDay: integer('birth_year').notNull(),
+    birthMonth: integer('birth_month').notNull(),
+    birthDay: integer('birth_day').notNull(),
+    center: text('center').notNull().references(() => center.location),
+    wristbandId: text('wristband-id').notNull().unique(),
     ...timestamps
 });
 
@@ -30,6 +34,7 @@ export const studentInventory = pgTable('student_inventory', {
     productId: serial('product_id').references(() => product.id),
     studentId: uuid('student_id').references(() => student.id)
 })
+
+
 export type Student = typeof student.$inferSelect;
 export type StudentProfile = typeof studentProfile.$inferSelect;
-

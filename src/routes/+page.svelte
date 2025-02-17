@@ -1,8 +1,11 @@
 <script lang="ts">
 	import { enhance } from '$app/forms';
+	import { centers } from '$lib/data';
 	import type { ActionData } from './$types';
 
 	let { form }: { form: ActionData } = $props();
+
+	let center: string = $state("")
 </script>
 
 <section>
@@ -34,6 +37,23 @@
 				Password
 				<input type="password" name="password" autocomplete="new-password"/>
 			</label>
+			<!--
+			<label>
+				Firstname
+				<input name="firstName" type="name" placeholder="Naous" autocomplete="new-password" />
+			</label>
+			<label>
+				Lastname
+				<input name="lastName" type="name" placeholder="Islam" autocomplete="new-password" />
+			</label>
+			
+			<label for="center">Center</label>
+				<select bind:value={center} name="center">
+					{#each centers as center}
+						<option value={center}>{center}</option>
+					{/each}
+				</select>
+				-->
 			<button class="primary">Login</button>
 		</form>
 		<br />

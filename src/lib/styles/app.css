@@ -29,11 +29,11 @@
     line-height: 1.8;
 }
 
-a {
+a, b {
   font-family: 'Azo Sans Bold';
 }
 
-button, label, b, h1, h2, h3, h4, h5 {
+button, label, h1, h2, h3, h4, h5 {
   font-family: 'Azo Sans Black';
 }
 

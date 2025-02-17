@@ -20,3 +20,10 @@
     scale: 1.02;
     transition: all 0.2s;
 }
+
+.success {
+    color: #0db88f;
+}
+.error {
+    color: #ca0d0d;
+}

@@ -1,23 +1,34 @@
-<script>
-	import { students } from "../students/data";
+<script lang="ts">
+	import type { ActionData, PageData } from "./$types";
+	import AddStudentForm from "./AddStudentForm.svelte"
+	
     /**
      * 1. Add student modal.
      * 2. Edit student.
     */
+   let { form, data }: {form: ActionData, data: PageData} = $props()
+
+   let { students, admin } = data
+   let showForm: boolean = $state(false);
 </script>
 
 
 <section>
+    {#if showForm}
+        <AddStudentForm location={admin.center} {students} {form} bind:open={showForm}></AddStudentForm>
+    {/if}
     <h2>Students</h2>
     <br>
     <span>
         <input type="search" placeholder="Search">
-        <a><button>Add Student</button></a>
+        <button onclick={() => {
+            showForm = true
+        }}>Add Student</button>
     </span>
     <br>
     <span>
         {#each students as student}
-        <a class="card" href="#">
+        <a class="card" href="/dashboard/students/{student.name}">
             <div>
                 <h3>
                     {student.name}

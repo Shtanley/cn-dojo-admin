@@ -35,6 +35,7 @@
 		display: flex;
 		justify-content: center;
 		align-items: center;
+		z-index: 1;
 	}
 	nav {
 		position: absolute;
@@ -44,7 +45,7 @@
 		flex-direction: column;
 		padding: 1em;
 		gap: 1em;
-		background-color: white;
+		background-color: #fcfdff;
 		border-radius: 1em;
 		top: 6em;
 		right: 6em;
