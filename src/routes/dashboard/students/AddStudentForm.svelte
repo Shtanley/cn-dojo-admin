@@ -4,7 +4,6 @@
 	import type { ActionData } from './$types';
 	import { belts } from '$lib/data';
 	import type { Student } from '$lib/server/data';
-	import { untrack } from 'svelte';
 
 	let { open = $bindable(false), form, students }: { open: boolean; form: ActionData, students: Student[] } = $props();
 

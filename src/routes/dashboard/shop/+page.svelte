@@ -1,9 +1,11 @@
 <script>
-	import { students } from "../../../lib/server/data";
 
     /**
      * Finish student and attendance page first.
     */
+   let {data} = $props()
+
+   let { products } = data;
 
 </script>
 
@@ -17,11 +19,11 @@
     </span>
     <br>
     <span>
-        {#each students as student}
+        {#each products as product}
         <a class="card" href="#">
             <div>
                 <h3>
-                    {student.name}
+                    {product.name}
                 </h3>
                 <button>Remove</button>
             </div>

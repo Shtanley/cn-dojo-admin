@@ -1,10 +1,11 @@
 <script>
-	import { students } from "../../../lib/server/data";
 
     /**
      * Finish students page first.
     */
+    let { data } = $props()
 
+    let { students } = data
 </script>
 
 
