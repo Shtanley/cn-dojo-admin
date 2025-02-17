@@ -47,7 +47,7 @@ export const actions: Actions = {
         }
         
         // Insert.
-        
+        console.log(studentData, studentProfileData)
         return { success: "Sucessfully added student!" }
     },
     update: () => {},

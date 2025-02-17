@@ -5,35 +5,38 @@
 	import { belts } from '$lib/data';
 	import type { Student } from '$lib/server/data';
 
-	let { open = $bindable(false), form, students }: { open: boolean; form: ActionData, students: Student[] } = $props();
+	let {
+		open = $bindable(false),
+		form,
+		students
+	}: { open: boolean; form: ActionData; students: Student[] } = $props();
 
-	let firstName: string = $state("");
-	let lastName: string = $state("");
+	let firstName: string = $state('');
+	let lastName: string = $state('');
 	let belt: string = $state('White');
-	let username: string = $state("")
+	let userName: string = $state('');
 
 	$effect(() => {
-		username = (firstName + "." + lastName).toLocaleLowerCase()
-	})
+		userName = (firstName + '.' + lastName).toLocaleLowerCase();
+	});
 
 	$effect(() => {
 		let attempt = 0;
-		
-		for(let i = 0; i < students.length; i++) {
-			if(username === students[i].username) {
+
+		for (let i = 0; i < students.length; i++) {
+			if (userName === students[i].username) {
 				attempt += 1;
-				let newUsername = username;
-				if(attempt > 1) {
-					newUsername = username.substring(0, username.length - 1) + attempt
+				let newUserName = userName;
+				if (attempt > 1) {
+					newUserName = userName.substring(0, userName.length - 1) + attempt;
+				} else {
+					newUserName += attempt;
 				}
-				else {
-					newUsername += attempt
-				}
-				username = newUsername
-				i = 0
+				userName = newUserName;
+				i = 0;
 			}
 		}
-	})
+	});
 </script>
 
 <section transition:scale>
@@ -56,11 +59,21 @@
 		<span>
 			<div class="input-container">
 				<label for="firstName"> First Name </label>
-			<input bind:value={firstName} name="firstName" autocomplete="new-password" placeholder="Jelly"/>
+				<input
+					bind:value={firstName}
+					name="firstName"
+					autocomplete="new-password"
+					placeholder="Jelly"
+				/>
 			</div>
 			<div class="input-container">
 				<label for="lastName"> Last Name </label>
-				<input bind:value={lastName} name="lastName" autocomplete="new-password" placeholder="Donut" />
+				<input
+					bind:value={lastName}
+					name="lastName"
+					autocomplete="new-password"
+					placeholder="Donut"
+				/>
 			</div>
 		</span>
 		<div class="input-container">
@@ -78,7 +91,6 @@
 				<input name="monthOfBirth" autocomplete="new-password" placeholder="1" />
 			</div>
 			<div class="input-container">
-			
 				<label for="yearOfBirth">Year</label>
 				<input name="yearOfBirth" autocomplete="new-password" placeholder="2010" />
 			</div>
@@ -86,21 +98,32 @@
 		<h4>Profile</h4>
 		<span>
 			<div class="input-container">
-				<label for="username"> Generated Username </label>
-				<input disabled bind:value={username} name="username" autocomplete="new-password" placeholder="jelly.donut.10" />
+				<label for="userName"> Generated Username </label>
+				<input
+					type="hidden"
+					style="display: none;"
+					bind:value={userName}
+					name="userName"
+					autocomplete="new-password"
+				/>
+				<input
+					disabled
+					bind:value={userName}
+					name="userName"
+					autocomplete="new-password"
+				/>
 			</div>
 			<div class="input-container">
 				<label for="password"> Password </label>
-				<input name="password" autocomplete="new-password" placeholder="......." />
+				<input type="password" name="password" autocomplete="new-password" placeholder="......." />
 			</div>
 		</span>
 		<span>
 			<div class="input-container">
-
 				<label for="belt">Belt</label>
 				<select bind:value={belt} name="belt">
 					{#each belts as belt}
-					<option value={belt}>{belt}</option>
+						<option value={belt}>{belt}</option>
 					{/each}
 				</select>
 			</div>
@@ -143,7 +166,8 @@
 			gap: 1em;
 			max-width: 32em;
 
-			input, select {
+			input,
+			select {
 				width: 100%;
 			}
 			span {
