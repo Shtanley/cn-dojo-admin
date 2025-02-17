@@ -1,6 +1,7 @@
 import { integer, pgTable, serial, text, uuid } from "drizzle-orm/pg-core";
 import { timestamps } from "./helpers";
 import { product } from "./product";
+import { center } from "./center";
 
 export const student = pgTable('student', {
     id: uuid('id').defaultRandom().primaryKey(),
@@ -10,8 +11,9 @@ export const student = pgTable('student', {
     firstName: text('first_name').notNull(),
     lastName: text('last_name').notNull(),
     birthYear: integer('birth_year').notNull(),
-    birthMonth: integer('birth_year').notNull(),
-    birthDay: integer('birth_year').notNull(),
+    birthMonth: integer('birth_month').notNull(),
+    birthDay: integer('birth_day').notNull(),
+    center: text('center').notNull().references(() => center.location),
     ...timestamps
 });
 
