@@ -14,6 +14,7 @@ export const student = pgTable('student', {
     birthMonth: integer('birth_month').notNull(),
     birthDay: integer('birth_day').notNull(),
     center: text('center').notNull().references(() => center.location),
+    wristbandId: text('wristband-id').notNull().unique(),
     ...timestamps
 });
 

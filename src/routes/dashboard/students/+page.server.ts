@@ -2,6 +2,7 @@ import { fail } from "@sveltejs/kit";
 import type { Actions, PageServerLoad } from "./$types.js";
 import { validateYear, validateEmail, validateName, validatePassword, validateMonth, validateDay, validateDate } from "$lib/server/validation";
 import { students } from "$lib/server/data.js";
+import { center } from "$lib/server/db/schema/center.js";
 
 export const load = async ({ params, locals }) => {
     let admin = locals.admin
@@ -21,6 +22,8 @@ export const actions: Actions = {
             birthDay: parseInt(formData.get('dayOfBirth') as string),
             birthMonth: parseInt(formData.get('monthOfBirth') as string),
             birthYear: parseInt(formData.get('yearOfBirth') as string),
+            center: formData.get('center') as string,
+            wristbandId: formData.get('wristbandId') as string,
         }
 
         let studentProfileData = {
@@ -28,6 +31,8 @@ export const actions: Actions = {
             level: parseInt(formData.get('level') as string) || 1,
             points: parseInt(formData.get('points') as string) || 10,
         }
+
+        console.log(studentData)
 
         if (!validateName(studentData.lastName)) {
             return fail(400, { error: "Invalid name." })

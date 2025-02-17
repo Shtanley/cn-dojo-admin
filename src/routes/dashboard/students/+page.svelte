@@ -8,14 +8,14 @@
     */
    let { form, data }: {form: ActionData, data: PageData} = $props()
 
-   let students = data.students
+   let { students, admin } = data
    let showForm: boolean = $state(false);
 </script>
 
 
 <section>
     {#if showForm}
-        <AddStudentForm {students} {form} bind:open={showForm}></AddStudentForm>
+        <AddStudentForm location={admin.center} {students} {form} bind:open={showForm}></AddStudentForm>
     {/if}
     <h2>Students</h2>
     <br>

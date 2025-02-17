@@ -8,13 +8,15 @@
 	let {
 		open = $bindable(false),
 		form,
-		students
-	}: { open: boolean; form: ActionData; students: Student[] } = $props();
+		students,
+		location
+	}: { open: boolean; form: ActionData; students: Student[]; location: string } = $props();
 
 	let firstName: string = $state('');
 	let lastName: string = $state('');
 	let belt: string = $state('White');
 	let userName: string = $state('');
+	let center: string = $state(location);
 
 	$effect(() => {
 		userName = (firstName + '.' + lastName).toLocaleLowerCase();
@@ -55,7 +57,6 @@
 				}}>Exit</button
 			>
 		</span>
-		<br />
 		<span>
 			<div class="input-container">
 				<label for="firstName"> First Name </label>
@@ -106,12 +107,7 @@
 					name="userName"
 					autocomplete="new-password"
 				/>
-				<input
-					disabled
-					bind:value={userName}
-					name="userName"
-					autocomplete="new-password"
-				/>
+				<input disabled bind:value={userName} name="userName" autocomplete="new-password" />
 			</div>
 			<div class="input-container">
 				<label for="password"> Password </label>
@@ -137,6 +133,17 @@
 				<input name="points" placeholder="10" />
 			</div>
 		</span>
+		<div class="input-container">
+			<label for="wristbandId"> Wristband ID </label>
+			<input name="wristbandId" placeholder="Scan Wristband" />
+		</div>
+		<input
+			type="hidden"
+			style="display: none;"
+			bind:value={center}
+			name="center"
+			autocomplete="new-password"
+		/>
 		{#if form?.error || form?.success}
 			<b class:error={form.error} class:success={form.success}>{form.success}{form.error}</b>
 		{/if}
