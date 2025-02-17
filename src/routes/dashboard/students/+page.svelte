@@ -1,7 +1,6 @@
 <script lang="ts">
 	import type { ActionData, PageData } from "./$types";
-	import AddStudentForm from "./AddStudentForm.svelte";
-	import type { Student } from "../../../lib/server/data";
+	import AddStudentForm from "./AddStudentForm.svelte"
 	
     /**
      * 1. Add student modal.
