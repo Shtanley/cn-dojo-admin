@@ -28,7 +28,7 @@
 	<div class="login-section">	<!-- Login Form -->
 		<h4>Code Ninjas Dojo Admin</h4>
 		<br />
-		<form method="post" action="?/register" use:enhance autocomplete="off">
+		<form method="post" action="?/login" use:enhance autocomplete="off">
 			<label>
 				Email
 				<input name="email" type="email" placeholder="m@example.com" autocomplete="new-password" />
