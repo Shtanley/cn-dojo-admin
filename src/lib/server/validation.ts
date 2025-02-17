@@ -22,7 +22,19 @@ export function validateDay(day: unknown): day is number {
 export function validateMonth(month: unknown): month is number {
     return typeof month === 'number' && month >= 1 && month <= 12;
 }
-export function validateYear(year: unknown, maxYears: number): year is number {
+
+export function validateYear(year: unknown, maxYears: number, minYears: number): year is number {
     let date = new Date()
-    return typeof year === 'number' && year >= (date.getFullYear() - maxYears);
+    return typeof year === 'number' && year >= (date.getFullYear() - maxYears) && year <= (date.getFullYear() - minYears);
+}
+
+export function validateDate(month: number, date: number, year: number) {
+    let newDate = new Date()
+    newDate.setFullYear(year, month - 1, date)
+
+    if(newDate.getFullYear() != year || newDate.getMonth() != (month - 1) || newDate.getDate() != date) {
+        return false
+    }
+
+    return true
 }

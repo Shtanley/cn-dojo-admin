@@ -1,6 +1,6 @@
 import { fail } from "@sveltejs/kit";
 import type { Actions, PageServerLoad } from "./$types.js";
-import { validateYear, validateEmail, validateName, validatePassword, validateMonth, validateDay } from "$lib/server/validation";
+import { validateYear, validateEmail, validateName, validatePassword, validateMonth, validateDay, validateDate } from "$lib/server/validation";
 import { students } from "$lib/server/data.js";
 
 export const load = async ({params}) => {
@@ -28,7 +28,6 @@ export const actions: Actions = {
             points : parseInt(formData.get('points') as string) || 10,
         }  
 
-        console.log(studentData, studentProfileData)
         if(!validateName(studentData.lastName)) {
             return fail(400, { error: "Invalid name." })
         }
@@ -41,9 +40,13 @@ export const actions: Actions = {
             return fail(400, { error: "Use a more secure password." })
         }
 
-        if(!validateYear(studentData.birthYear, 15) || !validateMonth(studentData.birthMonth) ||
+        if(!validateYear(studentData.birthYear, 15, 5) || !validateMonth(studentData.birthMonth) ||
         !validateDay(studentData.birthDay)) {
             return fail(400, { error: "Invalid age." })
+        }
+
+        if(!validateDate(studentData.birthMonth, studentData.birthDay, studentData.birthYear)) {
+            return fail(400, { error: "Invalid date of birth." })
         }
         
         // Insert.
