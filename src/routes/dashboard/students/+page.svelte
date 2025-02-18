@@ -1,6 +1,5 @@
 <script lang="ts">
 	import type { Student, StudentProfile } from '$lib/server/db/schema/student';
-	import { untrack } from 'svelte';
 	import type { ActionData, PageData } from './$types';
 	import AddStudentForm from './AddStudentForm.svelte';
 
