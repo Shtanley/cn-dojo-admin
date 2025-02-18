@@ -25,15 +25,36 @@
 					let searched = false;
 					for (let j = 0; j < filtered.length; j++) {
 						if (
-							filtered[j].student.firstName
-								.toLocaleLowerCase()
-								.includes(searchTerm.toLocaleLowerCase())
+							filtered[j].student.userName == students[i].student.userName
+						
 						) {
 							searched = true;
 						}
 					}
 					if (!searched) {
 						filtered.push(students[i]);
+						filtered.sort((x, y) => {
+							let xi = x.student.firstName.toLocaleLowerCase().indexOf(searchTerm.toLocaleLowerCase().charAt(0));
+							let yi = y.student.firstName.toLocaleLowerCase().indexOf(searchTerm.toLocaleLowerCase().charAt(0));
+							let maxLength = false;
+							let i = 1;
+							while(!maxLength) {
+								if(xi == yi) {
+									if(i < x.student.firstName.length && i < y.student.firstName.length) {
+										x.student.firstName.toLocaleLowerCase().indexOf(searchTerm.toLocaleLowerCase().charAt(i));
+										y.student.firstName.toLocaleLowerCase().indexOf(searchTerm.toLocaleLowerCase().charAt(i));
+									}
+									else {
+										maxLength = true
+									}
+									i++
+								}
+								else {
+									maxLength = true
+								}
+							}
+							return xi == yi ? 0 : xi < yi ? -1 : 1
+						})
 					}
 				}
 			}
