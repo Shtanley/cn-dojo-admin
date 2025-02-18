@@ -46,10 +46,13 @@
 
 	function updateTime(): void {
 		now = new Date();
-		updateHours();
+		if(now.getHours() == 1) {
+			updateHours()
+		}
 		updateTimeBlocks();
 		setTimeout(updateTime, 900);
 	}
+	updateHours();
 	updateTime();
 
 </script>
