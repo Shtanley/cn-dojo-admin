@@ -9,8 +9,7 @@
 	 */
 	let { form, data }: { form: ActionData; data: PageData } = $props();
 
-	let { admin } = data;
-	let students = $state(data.students)
+	let { students, admin } = $state(data);
 	let showForm: boolean = $state(false);
 
 	let searchTerm: string = $state('');
