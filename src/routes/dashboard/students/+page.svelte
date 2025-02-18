@@ -9,11 +9,16 @@
 	 */
 	let { form, data }: { form: ActionData; data: PageData } = $props();
 
-	let { students, admin } = data;
+	let { admin } = data;
+	let students = $state(data.students)
 	let showForm: boolean = $state(false);
 
 	let searchTerm: string = $state('');
 	let filtered: { student: Student; student_profile: StudentProfile }[] = $state([]);
+
+	$effect(() => {
+		students = data.students
+	})
 
 	$effect(() => {
 		if (searchTerm.length > 0) {

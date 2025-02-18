@@ -4,6 +4,7 @@
 	import type { ActionData } from './$types';
 	import { belts } from '$lib/data';
 	import type { Student, StudentProfile } from '$lib/server/db/schema/student';
+	import { invalidate, invalidateAll } from '$app/navigation';
 
 	let {
 		open = $bindable(false),
@@ -19,7 +20,7 @@
 	let center: string = $state(location);
 
 	$effect(() => {
-		userName = (firstName + '.' + lastName).toLocaleLowerCase();
+		userName = (firstName + '.' + lastName).toLocaleLowerCase().replace(/\s/g, '');;
 	});
 
 	$effect(() => {
@@ -147,7 +148,9 @@
 		{#if form?.error || form?.success}
 			<b class:error={form.error} class:success={form.success}>{form.success}{form.error}</b>
 		{/if}
-		<button type="submit">Add to Classlist</button>
+		<button type="submit" onclick={() => {
+			invalidateAll()
+		}}>Add to Classlist</button>
 	</form>
 </section>
 
