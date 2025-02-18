@@ -14,7 +14,7 @@
 
 
 <section>
-    {#if showForm}
+    {#if showForm && admin}
         <AddStudentForm location={admin.center} {students} {form} bind:open={showForm}></AddStudentForm>
     {/if}
     <h2>Students</h2>
@@ -32,6 +32,7 @@
             <div>
                 <h3>
                     {data.student.firstName}
+                    {data.student.lastName}
                 </h3>
                 <h4>Points: {data.student_profile.points}</h4>
             </div>

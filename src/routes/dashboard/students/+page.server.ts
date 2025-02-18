@@ -4,32 +4,6 @@ import { validateYear, validateEmail, validateName, validatePassword, validateMo
 import { student as studentTable, studentProfile as studentProfileTable, type Student, type StudentProfile } from "$lib/server/db/schema/student.js";
 import { db } from "$lib/server/db/index.js";
 import { hash } from "@node-rs/argon2";
-import { eq } from "drizzle-orm";
-
-export const load = async ({ params, locals }) => {
-    let admin = locals.admin
-
-    async function getStudents() {
-        let students: { student: Student, student_profile: StudentProfile }[] = [];
-        try {
-            if (admin?.center) {
-                let classList = await db.select().from(studentTable).where(eq(studentTable.center,
-                    admin.center
-                )).innerJoin(studentProfileTable, eq(studentProfileTable.studentId, studentTable.id))
-                students = classList
-            }
-        }
-        catch (e) {
-            return students
-        }
-        return students
-    }
-
-    return {
-        students: await getStudents(),
-        admin
-    }
-};
 
 export const actions: Actions = {
     add: async (event) => {
