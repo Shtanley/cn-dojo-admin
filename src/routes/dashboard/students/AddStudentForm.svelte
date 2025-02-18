@@ -3,14 +3,14 @@
 	import { enhance } from '$app/forms';
 	import type { ActionData } from './$types';
 	import { belts } from '$lib/data';
-	import type { Student } from '$lib/server/data';
+	import type { Student, StudentProfile } from '$lib/server/db/schema/student';
 
 	let {
 		open = $bindable(false),
 		form,
 		students,
 		location
-	}: { open: boolean; form: ActionData; students: Student[]; location: string } = $props();
+	}: { open: boolean; form: ActionData; students: { student: Student, student_profile: StudentProfile }[]; location: string } = $props();
 
 	let firstName: string = $state('');
 	let lastName: string = $state('');
@@ -26,7 +26,7 @@
 		let attempt = 0;
 
 		for (let i = 0; i < students.length; i++) {
-			if (userName === students[i].username) {
+			if (userName === students[i].student.userName) {
 				attempt += 1;
 				let newUserName = userName;
 				if (attempt > 1) {
@@ -92,7 +92,7 @@
 				<input name="monthOfBirth" autocomplete="new-password" placeholder="1" />
 			</div>
 			<div class="input-container">
-				<label for="yearOfBirth">Year</label>
+				<label for="yearOfBirth"> Year </label>
 				<input name="yearOfBirth" autocomplete="new-password" placeholder="2010" />
 			</div>
 		</span>

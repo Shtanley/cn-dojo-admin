@@ -27,13 +27,13 @@
     </span>
     <br>
     <span>
-        {#each students as student}
-        <a class="card" href="/dashboard/students/{student.name}">
+        {#each students as data}
+        <a class="card" href="/dashboard/students/{data.student.userName}">
             <div>
                 <h3>
-                    {student.name}
+                    {data.student.firstName}
                 </h3>
-                <h4>Points: {student.points}</h4>
+                <h4>Points: {data.student_profile.points}</h4>
             </div>
         </a>
     {/each}

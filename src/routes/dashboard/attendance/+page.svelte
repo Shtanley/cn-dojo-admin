@@ -19,11 +19,11 @@
     </span>
     <br>
     <span>
-        {#each students as student}
+        {#each students as data}
         <a class="card" href="#">
             <div>
                 <h3>
-                    {student.name}
+                    {data.student.firstName}
                 </h3>
                 <button class="danger-btn">Remove</button>
             </div>
