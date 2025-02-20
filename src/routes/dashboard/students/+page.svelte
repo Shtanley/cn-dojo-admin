@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { Student, StudentProfile } from '$lib/server/db/schema/student';
+	import { type Student, type StudentProfile } from '$lib/server/db/schema/student';
 	import type { ActionData, PageData } from './$types';
 	import AddStudentForm from './AddStudentForm.svelte';
 
@@ -12,7 +12,7 @@
 	let { students, admin } = $state(data);
 	let showForm: boolean = $state(false);
 
-	let searchTerm: string = $state('');
+	let searchTerm: string = $state(''.toLocaleLowerCase());
 	let filtered: { student: Student; student_profile: StudentProfile }[] = $state([]);
 
 	$effect(() => {
@@ -22,8 +22,9 @@
 	$effect(() => {
 		if (searchTerm.length > 0) {
 			for (let i = 0; i < students.length; i++) {
+				let studentName = (students[i].student.firstName + students[i].student.lastName).toLocaleLowerCase()
 				if (
-					students[i].student.firstName.toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase())
+					studentName.includes(searchTerm)
 				) {
 					let searched = false;
 					for (let j = 0; j < filtered.length; j++) {
@@ -37,8 +38,10 @@
 					if (!searched) {
 						filtered.push(students[i]);
 						filtered.sort((x, y) => {
-							let xi = x.student.firstName.toLocaleLowerCase().indexOf(searchTerm.toLocaleLowerCase().charAt(0));
-							let yi = y.student.firstName.toLocaleLowerCase().indexOf(searchTerm.toLocaleLowerCase().charAt(0));
+							let xname = x.student.firstName.toLocaleLowerCase() + x.student.lastName.toLocaleLowerCase()
+							let yname = y.student.firstName.toLocaleLowerCase() + y.student.lastName.toLocaleLowerCase()
+							let xi = xname.indexOf(searchTerm.charAt(0));
+							let yi = yname.indexOf(searchTerm.charAt(0));
 							let maxLength = false;
 							let i = 1;
 							while(!maxLength) {
