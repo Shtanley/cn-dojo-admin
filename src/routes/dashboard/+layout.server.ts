@@ -11,7 +11,7 @@ export const load = async ({ locals }) => {
             if (admin?.center) {
                 let classList = await db.select().from(studentTable).where(eq(studentTable.center,
                     admin.center
-                )).innerJoin(studentProfileTable, eq(studentProfileTable.studentId, studentTable.id)).orderBy(studentTable.firstName)
+                )).innerJoin(studentProfileTable, eq(studentProfileTable.studentId, studentTable.id)).orderBy(studentTable.firstName, studentTable.lastName)
                 students = classList
             }
         }

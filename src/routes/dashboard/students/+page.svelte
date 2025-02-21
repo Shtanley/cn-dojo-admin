@@ -12,62 +12,58 @@
 	let { students, admin } = $state(data);
 	let showForm: boolean = $state(false);
 
-	let searchTerm: string = $state(''.toLocaleLowerCase());
+	let searchTerm: string = $state(''.toLocaleLowerCase().replace(/\s/g, ''));
 	let filtered: { student: Student; student_profile: StudentProfile }[] = $state([]);
 
 	$effect(() => {
-		students = data.students
-	})
+		students = data.students;
+	});
 
 	$effect(() => {
 		if (searchTerm.length > 0) {
 			for (let i = 0; i < students.length; i++) {
-				let studentName = (students[i].student.firstName + students[i].student.lastName).toLocaleLowerCase()
-				if (
-					studentName.includes(searchTerm)
-				) {
+				let { student } = students[i];
+				let { student_profile } = students[i];
+				let studentKeys = (student.firstName + student.lastName).toLocaleLowerCase();
+
+				if (studentKeys.includes(searchTerm)) {
+					// 1. Check if already searched.
 					let searched = false;
 					for (let j = 0; j < filtered.length; j++) {
-						if (
-							filtered[j].student.userName == students[i].student.userName
-						
-						) {
+						let filteredStudentKeys = (
+							filtered[j].student.firstName + filtered[j].student.lastName
+						).toLocaleLowerCase();
+
+						if (filteredStudentKeys == studentKeys) {
 							searched = true;
+							break;
 						}
 					}
 					if (!searched) {
-						filtered.push(students[i]);
-						filtered.sort((x, y) => {
-							let xname = x.student.firstName.toLocaleLowerCase() + x.student.lastName.toLocaleLowerCase()
-							let yname = y.student.firstName.toLocaleLowerCase() + y.student.lastName.toLocaleLowerCase()
-							let xi = xname.indexOf(searchTerm.charAt(0));
-							let yi = yname.indexOf(searchTerm.charAt(0));
-							let maxLength = false;
-							let i = 1;
-							while(!maxLength) {
-								if(xi == yi) {
-									if(i < x.student.firstName.length && i < y.student.firstName.length) {
-										x.student.firstName.toLocaleLowerCase().indexOf(searchTerm.toLocaleLowerCase().charAt(i));
-										y.student.firstName.toLocaleLowerCase().indexOf(searchTerm.toLocaleLowerCase().charAt(i));
-									}
-									else {
-										maxLength = true
-									}
-									i++
-								}
-								else {
-									maxLength = true
-								}
-							}
-							return xi == yi ? 0 : xi < yi ? -1 : 1
-						})
+						filtered.push({ student, student_profile });
 					}
 				}
+				filtered.sort((x, y) => {
+					let xKeys = (x.student.firstName + x.student.lastName).toLocaleLowerCase();
+					let yKeys = (y.student.firstName + y.student.lastName).toLocaleLowerCase();
+
+					let xKeyChars = 0;
+					let yKeyChars = 0;
+
+					for (let k = 0; k < searchTerm.length; k++) {
+						if (xKeys.includes(searchTerm.charAt(k))) {
+							xKeyChars++;
+						}
+						if (yKeys.includes(searchTerm.charAt(k))) {
+							yKeyChars++;
+						}
+					}
+					return xKeyChars == yKeyChars ? 0 : xKeyChars < yKeyChars ? 1 : -1;
+				});
 			}
+		} else {
+			filtered = [];
 		}
-        else {
-            filtered = []
-        }
 	});
 </script>
 
