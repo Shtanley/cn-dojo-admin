@@ -42,7 +42,7 @@
 	});
 </script>
 
-<section transition:scale>
+<section transition:scale class="card">
 	<form method="post" action="/dashboard/students?/add" use:enhance>
 		<span>
 			<h2>New Student</h2>
@@ -159,14 +159,12 @@
 		justify-content: center;
 		align-items: center;
 		position: fixed;
-		background-color: #fcfdffdf;
-		backdrop-filter: blur(1em);
+		background-color: #fcfdff;
 		margin: 0;
 		z-index: 1;
 		gap: 1em;
 		height: 100%;
-		width: inherit;
-		padding: 0em;
+		width: fit-content;
 		top: 0;
 
 		form {

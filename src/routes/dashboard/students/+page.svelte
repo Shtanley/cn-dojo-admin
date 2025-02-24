@@ -125,28 +125,6 @@
 						</div>
 					</a>
 				{/each}
-				{#each students as data}
-					<a class="card" href="/dashboard/students/{data.student.userName}">
-						<div>
-							<h3>
-								{data.student.firstName}
-								{data.student.lastName}
-							</h3>
-							<h4>Points: {data.student_profile.points}</h4>
-						</div>
-					</a>
-				{/each}
-				{#each students as data}
-					<a class="card" href="/dashboard/students/{data.student.userName}">
-						<div>
-							<h3>
-								{data.student.firstName}
-								{data.student.lastName}
-							</h3>
-							<h4>Points: {data.student_profile.points}</h4>
-						</div>
-					</a>
-				{/each}
 			{/if}
 		{/key}
 	</span>
