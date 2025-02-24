@@ -13,40 +13,38 @@
 				</b></a
 			>
 		{/each}
+		<form method="post" action="/dashboard?/logout" use:enhance>
+			<button class="danger-btn"> <b>L</b> </button>
+		</form>
 	</div>
-	<form method="post" action="/dashboard?/logout" use:enhance>
-		<button class="danger-btn"> L </button>
-	</form>
 </nav>
 
 <style>
 	nav {
 		border-top: solid 0.16em rgba(200, 210, 219, 0.262);
-		padding: 1em;
+		padding: 1em 0;
 		display: flex;
 		justify-content: center;
-        align-items: center;
-		gap: 1em;
+		align-items: center;
 		width: 100%;
 
 		div {
 			display: flex;
 			justify-content: center;
-            align-items: center;
-            gap: 0.5em;
+			align-items: center;
+			gap: 0.5em;
 			a {
 				display: flex;
 				justify-content: center;
 				align-items: center;
 				text-decoration: none;
-				font-size: 1em;
+				font-size: clamp(18px, 4vw, 32px);
 				transition: all 0.2s;
-				width: 100%;
 				height: 3em;
 				width: 3em;
-                border-radius: 0.4em;
-                border: solid 0.16em rgba(255, 255, 255, 0.393);
-                text-align: center;
+				border-radius: 0.4em;
+				border: solid 0.16em rgba(255, 255, 255, 0.393);
+				text-align: center;
 				b {
 					transition: all 0.2s;
 				}
@@ -60,19 +58,22 @@
 					color: white;
 				}
 			}
-		}
-		form {
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			height: 3em;
-			width: 3em;
-			padding: 0;
-			position: relative;
-
-			button {
-				padding: 0 1.1em;
+			form {
 				height: 3em;
+				width: 3em;
+				padding: 0;
+				font-size: clamp(18px, 4vw, 32px);
+
+				button {
+					font-size: clamp(18px, 4vw, 32px);
+					min-width: 3em;
+					padding: 0;
+					height: 3em;
+					width: 3em;
+					b {
+						color: white;
+					}
+				}
 			}
 		}
 	}
