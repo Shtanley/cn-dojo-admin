@@ -21,6 +21,12 @@
 
 	$effect(() => {
 		if (searchTerm.length > 0) {
+			/**
+			 * // Searching
+			 * 1. Check if keys include search term.
+			 * 2. Then check if students have already been searched.
+			 * 3. Then check push to array, else skip.\
+			 */
 			for (let i = 0; i < students.length; i++) {
 				let { student } = students[i];
 				let { student_profile } = students[i];
@@ -43,6 +49,12 @@
 						filtered.push({ student, student_profile });
 					}
 				}
+				/**
+				 // Sorting
+				* 1. Check which key includes more characters.
+				* 2. Check which key contains the search term first.
+				* 
+				*/
 				filtered.sort((x, y) => {
 					let xKeys = (x.student.firstName + x.student.lastName).toLocaleLowerCase();
 					let yKeys = (y.student.firstName + y.student.lastName).toLocaleLowerCase();
@@ -58,8 +70,14 @@
 							yKeyChars++;
 						}
 					}
-					return xKeyChars == yKeyChars ? 0 : xKeyChars < yKeyChars ? 1 : -1;
-				});
+					if (xKeys.indexOf(searchTerm) < yKeys.indexOf(searchTerm) || xKeyChars > yKeyChars || xKeys.indexOf(searchTerm) == 0) {
+						return -1;
+					}
+					if (xKeys.indexOf(searchTerm) == yKeys.indexOf(searchTerm) && xKeyChars == yKeyChars) {
+						return 0;
+					} 
+					return 1;
+				}); 
 			}
 		} else {
 			filtered = [];
