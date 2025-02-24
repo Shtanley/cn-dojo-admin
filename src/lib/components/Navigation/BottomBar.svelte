@@ -38,7 +38,7 @@
 				justify-content: center;
 				align-items: center;
 				text-decoration: none;
-				font-size: clamp(1vw, 4vw, 32px);
+				font-size: clamp(1vw, 3vh, 32px);
 				transition: all 0.2s;
 				height: 3em;
 				width: 3em;
@@ -62,10 +62,10 @@
 				height: 3em;
 				width: 3em;
 				padding: 0;
-				font-size: clamp(1vw, 4vw, 32px);
+				font-size: clamp(1vw, 3vh, 32px);
 
 				button {
-					font-size: clamp(1vw, 4vw, 32px);
+					font-size: clamp(1vw, 3vh, 32px);
 					min-width: 3em;
 					padding: 0;
 					height: 3em;
