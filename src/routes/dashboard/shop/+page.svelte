@@ -12,12 +12,11 @@
 
 <section>
     <h2>Shop</h2>
-    <br>
+
     <span>
         <input type="search" placeholder="Search">
         <a><button>Add Product</button></a>
     </span>
-    <br>
     <span>
         {#each products as product}
         <a class="card" href="#">
@@ -35,9 +34,11 @@
 <style>
     section {
         display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
+		flex-direction: column;
+		align-items: center;
+		height: 100%;
+		width: 100%;
+		position: relative;
 
         span {
             display: flex;

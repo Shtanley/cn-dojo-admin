@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { page } from '$app/state';
 	import { navItems } from './data';
-	import DropDown from '$lib/components/Navigation/DropDown.svelte';
+	import DropDown from '$lib/components/OIdNavigation/DropDown.svelte';
 	import MobileNavigation from './MobileNavigation.svelte';
 </script>
 

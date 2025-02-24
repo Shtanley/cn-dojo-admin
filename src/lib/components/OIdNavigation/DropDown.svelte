@@ -23,9 +23,7 @@
 					</a
 				>
 			{/each}
-			<form method="post" action="/dashboard?/logout" use:enhance>
-				<button id="mobileSignOut"> Sign Out </button>
-			</form>
+			
 		</nav>
 	{/if}
 </div>

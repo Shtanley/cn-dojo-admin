@@ -158,13 +158,14 @@
 	section {
 		justify-content: center;
 		align-items: center;
-		position: absolute;
-		background-color: #fcfdff;
+		position: fixed;
+		background-color: #fcfdffdf;
+		backdrop-filter: blur(1em);
 		margin: 0;
 		z-index: 1;
 		gap: 1em;
 		height: 100%;
-		width: 100%;
+		width: inherit;
 		padding: 0em;
 		top: 0;
 

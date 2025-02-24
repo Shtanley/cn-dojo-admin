@@ -53,6 +53,7 @@
 				 // Sorting
 				* 1. Check which key includes more characters.
 				* 2. Check which key contains the search term first.
+				* 3. Check if key starts with search term.
 				* 
 				*/
 				filtered.sort((x, y) => {
@@ -90,7 +91,6 @@
 		<AddStudentForm location={admin.center} {students} {form} bind:open={showForm}></AddStudentForm>
 	{/if}
 	<h2>Students</h2>
-	<br />
 	<span>
 		<input bind:value={searchTerm} type="search" placeholder="Search" />
 		<button
@@ -99,7 +99,6 @@
 			}}>Add Student</button
 		>
 	</span>
-	<br />
 	<span>
 		{#key filtered.length}
 			{#if filtered.length >= 1}
@@ -126,6 +125,28 @@
 						</div>
 					</a>
 				{/each}
+				{#each students as data}
+					<a class="card" href="/dashboard/students/{data.student.userName}">
+						<div>
+							<h3>
+								{data.student.firstName}
+								{data.student.lastName}
+							</h3>
+							<h4>Points: {data.student_profile.points}</h4>
+						</div>
+					</a>
+				{/each}
+				{#each students as data}
+					<a class="card" href="/dashboard/students/{data.student.userName}">
+						<div>
+							<h3>
+								{data.student.firstName}
+								{data.student.lastName}
+							</h3>
+							<h4>Points: {data.student_profile.points}</h4>
+						</div>
+					</a>
+				{/each}
 			{/if}
 		{/key}
 	</span>
@@ -137,6 +158,9 @@
 		flex-direction: column;
 		justify-content: center;
 		align-items: center;
+		height: 100%;
+		width: 100%;
+		position: relative;
 
 		span {
 			display: flex;
