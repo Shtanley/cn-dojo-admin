@@ -6,10 +6,10 @@
      * 1. Add student modal.
      * 2. Edit student.
     */
-   let { form, data }: {form: ActionData, data: PageData} = $props()
+    let { form, data }: {form: ActionData, data: PageData} = $props()
 
-   let { students, admin } = data
-   let showForm: boolean = $state(false);
+    let { students, admin } = data
+    let showForm: boolean = $state(false);
 </script>
 
 
