@@ -36,6 +36,7 @@ import SideBar from "$lib/components/Navigation/SideBar.svelte";
 		bottom: 0;
 		width: 100vw;
 		background-color: #fcfdff;
+		z-index: 1;
 	}
 
 	@media (width < 1400px) {
