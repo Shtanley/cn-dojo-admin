@@ -13,7 +13,6 @@
 	let productName: string = $state('');
 	let price: number = $state(0);
 	let category: string = $state('');
-	let stock: number = $state(1); // default stock, kinda useless but should we keep it?
 
 	$effect(() => {
 		let attempt = 0;
@@ -63,7 +62,7 @@
 
 		<span>
 			<div class="input-container">
-				<label for="price"> Price ($) </label>
+				<label for="price"> Price (pts) </label>
 				<input
 					type="number"
 					bind:value={price}
@@ -71,17 +70,6 @@
 					placeholder="10"
 					min="0"
 					step="1"
-				/>
-			</div>
-			<!-- Idea: once stock hits 0 put in a request/notification that doesn't disappear till restock -->
-			<div class="input-container">
-				<label for="stock"> Stock </label>
-				<input
-					type="number"
-					bind:value={stock}
-					name="stock"
-					placeholder="1"
-					min="1"
 				/>
 			</div>
 		</span>
