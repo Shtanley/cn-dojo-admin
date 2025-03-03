@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
 	import Activity from './components/Activity.svelte';
 	import Clock from './components/Clock.svelte';
 	import { activities, getTimeBlocks } from './components/data';
@@ -52,8 +53,10 @@
 		updateTimeBlocks();
 		setTimeout(updateTime, 900);
 	}
-	updateHours();
-	updateTime();
+	onMount(() => {
+		updateHours();
+		updateTime();
+	})
 
 </script>
 

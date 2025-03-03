@@ -1,4 +1,6 @@
-<script>
+<script lang="ts">
+	import { invalidate, invalidateAll } from '$app/navigation';
+	import { onMount } from 'svelte';
 
     /**
      * Finish students page first.
@@ -6,6 +8,21 @@
     let { data } = $props()
 
     let { students } = data
+
+    async function checkAttendanceLog() {
+        let res = await fetch(`/dashboard/attendance/${data.center?.id}`)
+        let lastUpdated = new Date(await res.json())
+        if((new Date().getTime() - lastUpdated.getTime()) < 3000) {
+            invalidateAll()    
+        }
+        setTimeout(() => {
+            checkAttendanceLog()
+        }, 1000)
+    }
+
+    onMount(async () => {
+        await checkAttendanceLog()
+    })
 </script>
 
 
