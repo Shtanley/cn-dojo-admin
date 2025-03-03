@@ -53,10 +53,8 @@
 		updateTimeBlocks();
 		setTimeout(updateTime, 900);
 	}
-	onMount(() => {
-		updateHours();
-		updateTime();
-	})
+	updateHours();
+	updateTime();
 
 </script>
 
