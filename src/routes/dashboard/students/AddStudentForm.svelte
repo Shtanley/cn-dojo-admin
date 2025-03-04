@@ -3,14 +3,15 @@
 	import { enhance } from '$app/forms';
 	import type { ActionData } from './$types';
 	import { belts } from '$lib/data';
-	import type { Student } from '$lib/server/data';
+	import type { Student, StudentProfile } from '$lib/server/db/schema/student';
+	import { invalidate, invalidateAll } from '$app/navigation';
 
 	let {
 		open = $bindable(false),
 		form,
 		students,
 		location
-	}: { open: boolean; form: ActionData; students: Student[]; location: string } = $props();
+	}: { open: boolean; form: ActionData; students: { student: Student, student_profile: StudentProfile }[]; location: string } = $props();
 
 	let firstName: string = $state('');
 	let lastName: string = $state('');
@@ -19,14 +20,14 @@
 	let center: string = $state(location);
 
 	$effect(() => {
-		userName = (firstName + '.' + lastName).toLocaleLowerCase();
+		userName = (firstName + '.' + lastName).toLocaleLowerCase().replace(/\s/g, '');;
 	});
 
 	$effect(() => {
 		let attempt = 0;
 
 		for (let i = 0; i < students.length; i++) {
-			if (userName === students[i].username) {
+			if (userName === students[i].student.userName) {
 				attempt += 1;
 				let newUserName = userName;
 				if (attempt > 1) {
@@ -41,7 +42,7 @@
 	});
 </script>
 
-<section transition:scale>
+<section transition:scale class="card">
 	<form method="post" action="/dashboard/students?/add" use:enhance>
 		<span>
 			<h2>New Student</h2>
@@ -92,7 +93,7 @@
 				<input name="monthOfBirth" autocomplete="new-password" placeholder="1" />
 			</div>
 			<div class="input-container">
-				<label for="yearOfBirth">Year</label>
+				<label for="yearOfBirth"> Year </label>
 				<input name="yearOfBirth" autocomplete="new-password" placeholder="2010" />
 			</div>
 		</span>
@@ -147,7 +148,9 @@
 		{#if form?.error || form?.success}
 			<b class:error={form.error} class:success={form.success}>{form.success}{form.error}</b>
 		{/if}
-		<button type="submit">Add to Classlist</button>
+		<button type="submit" onclick={() => {
+			invalidateAll()
+		}}>Add to Classlist</button>
 	</form>
 </section>
 
@@ -155,14 +158,13 @@
 	section {
 		justify-content: center;
 		align-items: center;
-		position: absolute;
+		position: fixed;
 		background-color: #fcfdff;
 		margin: 0;
 		z-index: 1;
 		gap: 1em;
 		height: 100%;
-		width: 100%;
-		padding: 0em;
+		width: fit-content;
 		top: 0;
 
 		form {

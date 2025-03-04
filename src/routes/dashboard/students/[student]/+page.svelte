@@ -1,132 +1,63 @@
 <script lang="ts">
-    import { onMount } from 'svelte';
-    import { writable } from 'svelte/store';
+	import { enhance } from '$app/forms';
+	import type { Student, StudentProfile } from '$lib/server/db/schema/student.js';
 
-    let { data } = $props();
-    let { student } = data;
+    let { data, form } = $props()
 
-    let pointButtons = writable<number[]>([1, 2, 3, 4, 5]);
-    let customAmount = writable<number>(0);
-    let history = writable<{ amount: number, note: string, timestamp: string }[]>([]);
-    let note = writable<string>("");
+    let { userName, students } = data
+    let studentData: { student: Student, student_profile: StudentProfile } = students[0];
 
-    const modifyPoints = (amount: number, reason: string) => {
-        student.points += amount;
-        history.update(h => [{ amount, note: reason, timestamp: new Date().toLocaleString() }, ...h]);
-    };
+    for(let i = 0; i < students.length; i++) {
+      if(students[i].student.userName == userName) {
+        studentData = students[i]
+        break
+      }
+    }
 
-    const addCustomButton = () => {
-        if ($customAmount > 0 && !$pointButtons.includes($customAmount)) {
-            pointButtons.update(buttons => [...buttons, $customAmount]);
-        }
-    };
-
-    const removeButton = (amount: number) => {
-        pointButtons.update(buttons => buttons.filter(button => button !== amount));
-    };
+    let { student, student_profile } = studentData
 </script>
 
 <section>
-    <!-- Header section with student name, points, and custom input fields -->
-    <div class="header">
-        <h1>{student?.name}'s Profile</h1>
-        <h2>Points: {student?.points}</h2>
-        
-        <div class="custom-controls">
-            <input type="number" bind:value={customAmount} placeholder="Custom Amount" />
-            <button on:click={addCustomButton}>Add Button</button>
-            
-            <input type="number" bind:value={customAmount} placeholder="Points to Remove" />
-            <input type="text" bind:value={$note} placeholder="Note" />
-            <button on:click={() => modifyPoints($customAmount, $note)}>Modify Points</button>
-        </div>
-    </div>
+    <h1>{student.firstName} {student.lastName}</h1>
+    <h3>{student_profile.points} Points</h3>
+    <h4>{student_profile.belt} Belt - Level {student_profile.level}</h4>
+    <h3>{student.email}</h3>
 
-    <!-- Grid for predefined add/remove point buttons -->
-    <div class="grid">
-        {#each $pointButtons as amount}
-            <button on:click={() => modifyPoints(+amount, `Added ${amount} points`)}>+{amount}</button>
-            <button on:click={() => modifyPoints(-amount, `Removed ${amount} points`)}>-{amount}</button>
-        {/each}
-    </div>
+    <form method="post" action="/dashboard/students/{userName}?/addPoints" use:enhance>
+      <input type="text" name="pointsToAdd">
+      <input hidden bind:value={student_profile.points} style="display: none;" type="text" name="points">
+      <input hidden bind:value={student.id} style="display: none;"  type="text" name="studentId">
+      {#if form?.error}
+        <b>{form.error}</b>
+      {/if}
+      <button>Submit</button>
+    </form>
 
-    <!-- Scrollable History Section -->
-    <div class="history-container">
-        <h3>History</h3>
-        <ul class="history">
-            {#each $history as entry}
-                <li>{entry.timestamp} {entry.amount} points ({entry.note})</li>
-            {/each}
-        </ul>
-    </div>
+    <form method="post" action="/dashboard/students/{userName}?/addPoints" use:enhance>
+      <input hidden style="display: none" value="5" name="pointsToAdd">
+      <input hidden bind:value={student_profile.points} style="display: none;" type="text" name="points">
+      <input hidden bind:value={student.id} style="display: none;"  type="text" name="studentId">
+      {#if form?.error}
+        <b>{form.error}</b>
+      {/if}
+      <button>+5</button>
+    </form>
+    <form method="post" action="/dashboard/students/{userName}?/removePoints" use:enhance>
+      <input hidden style="display: none" value="5" name="pointsToRemove">
+      <input hidden bind:value={student_profile.points} style="display: none;" type="text" name="points">
+      <input hidden bind:value={student.id} style="display: none;"  type="text" name="studentId">
+      {#if form?.error}
+        <b>{form.error}</b>
+      {/if}
+      <button>-5</button>
+    </form>
 </section>
 
+
 <style>
-    section {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 1.5rem;
-    }
-
-    .header {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        flex-wrap: wrap;
-        width: 100%;
-        max-width: 800px;
-        gap: 1rem;
-    }
-
-    .custom-controls {
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-        flex-wrap: wrap;
-    }
-
-    .grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
-        gap: 1rem;
-        width: 100%;
-        max-width: 600px;
-        justify-content: center;
-    }
-
-    button {
-        padding: 10px;
-        cursor: pointer;
-        text-align: center;
-        width: 100%;
-        min-width: 80px;
-    }
-
-    input {
-        padding: 5px;
-        width: 150px;
-    }
-
-    /* Scrollable History Section */
-    .history-container {
-        width: 100%;
-        max-width: 600px;
-        text-align: center;
-    }
-
-    .history {
-        list-style-type: none;
-        padding: 0;
-        margin-top: 10px;
-        max-height: 200px;
-        overflow-y: auto;
-        display: flex;
-        flex-direction: column;
-    }
-
-    .history li {
-        padding: 5px;
-        border-bottom: 1px solid #ddd;
-    }
+  section {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
 </style>
