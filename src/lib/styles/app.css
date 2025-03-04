@@ -60,6 +60,7 @@ small {font-size: 0.667rem; /* 10.72px */}
 section {
   padding: 4em;
   display: flex;
+  flex-wrap: wrap;
   gap: 2em;
 }
 

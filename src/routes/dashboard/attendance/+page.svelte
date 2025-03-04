@@ -36,16 +36,16 @@
     </span>
     <br>
     <span>
-        {#each students as data}
+        {#each students as student}
         <a class="card" href="#">
             <div>
                 <h3>
-                    {data.student.firstName}
+                    {student.name}
                 </h3>
                 <button class="danger-btn">Remove</button>
             </div>
         </a>
-    {/each}
+        {/each}
     </span>
 </section>
 

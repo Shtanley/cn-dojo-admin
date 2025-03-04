@@ -1,33 +1,56 @@
-Updated: 2/18/2025
+Todo: 
+Replace customers -> students
 
-Todo:
-Students 
-    - Search
+Timer {
+    Update Timeblocks,
+    space for nametags,
+    fetch attendance
+}
 
-Student Profile 
-    - Award points.
-    - Edit all fields.
-    - Display inventory.
-    - Display purchase history.
-    - Remove from class.
+Attendance {
+    search,
+    scan student,
+    manual removal/add
 
-Attendance
-    - Search
-    - Add to attendance.
-    - Remove from attendance.
-    - Scan wristband.
+    table {
+        student id
+    }
+}
 
-Timer 
-    - Add hour countdown.
-    - Add timeblock message.
-    - Display 1 activity at a time.
-    - Space for attendance.
-    - Update color palette.
-    - Realtime attendance updates.
+Students {
+    search
+    add/remove/edit
+        id,
+        name,
+        email,
+        username,
+        password,
+        belt,
+        level,
+        points,
+        dob,
+        studentNumber,
+        nametagImageSrc => shopitem.src,
+        icon => shopitem.src
 
-Products 
-    - Add/Edit/Remove (Refer to student page.)
+    inventory {
+        id => shop item
+        date purchased,
+    }
+}
 
-Backend
-    - Set up storage bucket for images.
-    - Set up realtime notifications from db.
+Products {
+    search
+    add/remove/edit
+        id,
+        name,
+        description,
+        image src,
+        price,
+        category => item-category
+}
+
+Product-Category {
+    id,
+    name
+}

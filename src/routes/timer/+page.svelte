@@ -2,29 +2,24 @@
 	import { onMount } from 'svelte';
 	import Activity from './components/Activity.svelte';
 	import Clock from './components/Clock.svelte';
-	import { activities, getTimeBlocks } from './components/data';
+	import {
+		activities,
+		firstHourTimeBlocks,
+		secondHourTimeBlocks,
+		thirdHourTimeBlocks,
+		lastHourTimeBlocks
+	} from './components/data';
 
 	let now: Date = $state(new Date());
+	let startTime: Date = firstHourTimeBlocks[0];
+	let endTime: Date = lastHourTimeBlocks[lastHourTimeBlocks.length - 1];
+	endTime.setHours(lastHourTimeBlocks[0].getHours() + 1, lastHourTimeBlocks[0].getMinutes(), 0, 0);
 
-	let firstHourTimeBlocks: Date[] = $state([]);
-	let secondHourTimeBlocks: Date[] = $state([]);
-	let thirdHourTimeBlocks: Date[] = $state([]);
-	let lastHourTimeBlocks: Date[] = $state([]);
-	let endTime: Date = new Date();
+	let timeBlocks: Date[] = $state(lastHourTimeBlocks);
 
-	function updateHours() {
-		firstHourTimeBlocks = now.getDay() == 6 ? getTimeBlocks(false, 10) : getTimeBlocks(true, 15);
-		secondHourTimeBlocks = now.getDay() == 6 ? getTimeBlocks(false, 11) : getTimeBlocks(true, 16);
-		thirdHourTimeBlocks = now.getDay() == 6 ? getTimeBlocks(false, 12) : getTimeBlocks(true, 17);
-		lastHourTimeBlocks = now.getDay() == 6 ? getTimeBlocks(false, 13) : getTimeBlocks(true, 18);
-		endTime.setHours(lastHourTimeBlocks[0].getHours() + 1, lastHourTimeBlocks[0].getMinutes(), 0, 0);
-	}
+	function setHour(): Date[] {
+		let timeblocks: Date[];
 
-	let startTime: Date = $derived(firstHourTimeBlocks[0]);
-
-	let timeblocks: Date[] = $state([]);
-
-	function updateTimeBlocks() {
 		if (now.getTime() < secondHourTimeBlocks[0].getTime()) {
 			timeblocks = firstHourTimeBlocks;
 		} else if (now.getTime() < thirdHourTimeBlocks[0].getTime()) {
@@ -33,10 +28,13 @@
 			timeblocks = thirdHourTimeBlocks;
 		} else if (now.getTime() < endTime.getTime()) {
 			timeblocks = lastHourTimeBlocks;
-		} else {
+		}
+		else {
 			timeblocks = firstHourTimeBlocks;
 		}
+		return timeblocks;
 	}
+
 	function hourStart(now: Date, startTime: Date, endTime: Date): boolean {
 		if (now > startTime && now < endTime) {
 			return true;
@@ -47,15 +45,10 @@
 
 	function updateTime(): void {
 		now = new Date();
-		if(now.getHours() == 1) {
-			updateHours()
-		}
-		updateTimeBlocks();
-		setTimeout(updateTime, 900);
+		timeBlocks = setHour();
+		setTimeout(updateTime, 1);
 	}
-	updateHours();
 	updateTime();
-
 </script>
 
 <section>
@@ -67,8 +60,8 @@
 			<Activity
 				{now}
 				name={activity.name}
-				start={timeblocks[i]}
-				end={timeblocks[i + 1]}
+				start={timeBlocks[i]}
+				end={timeBlocks[i + 1]}
 				image={activity.image}
 			></Activity>
 			<span></span>
@@ -78,7 +71,7 @@
 			time={now.toLocaleTimeString('en-US', {
 				hour12: true,
 				hour: 'numeric',
-				minute: '2-digit'
+				minute: '2-digit',
 			})}
 		></Clock>
 	</div>

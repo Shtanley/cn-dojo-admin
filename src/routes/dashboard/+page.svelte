@@ -11,9 +11,8 @@
 </script>
 
 <section>
-	<h1>Overview</h1>	
 	<div class="card">
-		<h2>Hi, {data.admin.firstName}!</h2>
+		<h1>Hi, {data.admin.firstName}!</h1>
 		<p>
 			Welcome to your dashboard, on this overview page you'll get a summary of your students, attendance, shop and more! Use the links in the navigation to access the other pages.
 		</p>
@@ -23,19 +22,11 @@
 </section>
 
 <style>
-	section {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		height: 100%;
-		width: 100%;
-		position: relative;
-
-		div, .card {
-			min-height: fit-content;
-			height: fit-content;
-			flex: 0;
+	@media (width < 1000px) {
+		section {
+			justify-content: center;
+			align-items: center;
+			padding: 2em;
 		}
-
 	}
 </style>

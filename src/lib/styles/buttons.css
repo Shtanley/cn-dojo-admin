@@ -5,7 +5,7 @@ button {
     border: solid 0.16em rgba(255, 255, 255, 0.393);
     outline: none;
     min-width: fit-content;
-    border-radius: 0.4em;
+    border-radius: 0.25em;
     color: white;
     transition: all 0.2s;
 }
